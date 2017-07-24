@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to DOM Events!"
+title:  "Optimization and Performance: Memoizing in JavaScript!"
 date:   2017-07-23 22:43:44 -0600
 categories: domevents
 ---
