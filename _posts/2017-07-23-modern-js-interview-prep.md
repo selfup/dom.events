@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to DOM Events!"
+title:  "Modern JavaScript Interview Prep!"
 date:   2017-07-23 20:43:44 -0600
 categories: domevents
 ---
