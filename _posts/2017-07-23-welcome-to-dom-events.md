@@ -6,6 +6,8 @@ categories: domevents
 ---
 ### Test your JS knowledge
 
+_test code blocks in your dev tools console, or wherever :)_
+
 <hr>
 <hr>
 <hr>
