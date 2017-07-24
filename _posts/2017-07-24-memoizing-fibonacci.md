@@ -126,6 +126,8 @@ return Object.assign(
 
 If we merge `cache`, with the new result, into a new object, we essentially break our optimization and build a proper stack like the first fib we defined. This effectively brings us back to square one!
 
+Instead of recycling, we make a new object everytime and collect the old garbage. That is not what we want to do here :P
+
 Just be aware of this gotcha and understand why it deoptimizes our code :)
 
 **Here is a way to do it in ES5**:
