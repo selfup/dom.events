@@ -128,7 +128,7 @@ If we merge `cache`, with the new result, into a new object, we essentially brea
 
 Just be aware of this gotcha and understand why it deoptimizes our code :)
 
-**Here is a way to do it in ES5 if**:
+**Here is a way to do it in ES5**:
 
 ```javascript
 function fib(n, cache) {
