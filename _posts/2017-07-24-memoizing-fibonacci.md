@@ -17,9 +17,9 @@ _test code blocks in your dev tools console, or wherever :)_
 
 The classic, first introduction to recursion most of us know.
 
-The problem is, that we then see why tail call optimization is so important. We don't want to pollute the stack, but how do we do this?
+The problem is, we immediately see why tail call optimization is so important. We don't want to pollute the stack, but how do we do this?
 
-Ahh, well we create our own sor tof optimization!
+Ahh, well we create our own sort of optimization!
 
 Here is an example of a basic `fib` function:
 
