@@ -97,7 +97,7 @@ const fib = (num, cache = {}) => {
 
 Now this function can take **42**, **500**, **900**, **1000**, and so on!
 
-_Take note: This is not compiler level tail call optimization which ES6 does provide with certain flags in beta versions of Chrome._
+_Take note: This is not a compiler level tail call optimization which ES6 does provide with certain flags in beta versions of Chrome._
 
 To be fair once you get near **2000**, it will start just returning `Infinity`. However this is a good way to show the power of being able to optimize a tail call ourselves, without having to do too much magic.
 
@@ -110,7 +110,7 @@ cache[n] = fib(num - 1, cache) + fib(num - 2, cache);
 return cache[n];
 ```
 
-Either way you assign a cache key to the result of the function (as long as you return the function result) you should be good to go.
+Either way you decide to assign a cache key to the result of the function (as long as you return the function result) you should be good to go.
 
 
 **A Great Gotcha**
@@ -123,7 +123,7 @@ Either way you assign a cache key to the result of the function (as long as you 
   )[num];
 ```
 
-If we merge `cache` being merged with the new result into a new object, we essentially break our optimization and build a proper stack like the first function fib we defined. This effectively brings us back to square one!
+If we merge `cache`, with the new result, into a new object, we essentially break our optimization and build a proper stack like the first fib we defined. This effectively brings us back to square one!
 
 Just be aware of this gotcha and understand why it deoptimizes our code :)
 
