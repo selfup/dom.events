@@ -103,7 +103,7 @@ To be fair once you get near **2000**, it will start just returning `Infinity`. 
 
 Also instead of using `Object.assign` we could just overwrite the parameter directly, but this is ill advised.
 
-If _that is your thing_ this is how you could do it:
+If you don't have a transpiler this is how you could do it:
 
 ```javascript
 cache[n] = fib(num - 1, cache) + fib(num - 2, cache);
@@ -112,7 +112,22 @@ return cache[n];
 
 Either way you assign a cache key to the result of the function (as long as you return the function result) you should be good to go.
 
-**Here is a way to do it in ES5 if** _that's your thing_:
+
+**A Great Gotcha**
+
+```javascript
+  return Object.assign(
+    {}, //  << this is the important part - LOOK HERE!
+    cache,
+    { [num]: (fib(num - 1, cache) + fib(num - 2, cache)) },
+  )[num];
+```
+
+If we merge `cache` being merged with the new result into a new object, we essentially break our optimization and build a proper stack like the first function fib we defined. This effectively brings us back to square one!
+
+Just be aware of this gotcha and understand why it deoptimizes our code :)
+
+**Here is a way to do it in ES5 if**:
 
 ```javascript
 function fib(n, cache) {
