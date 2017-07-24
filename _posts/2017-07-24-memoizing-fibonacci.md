@@ -92,6 +92,7 @@ const fib = (num, cache = {}) => {
     cache,
     { [num]: (fib(num - 1, cache) + fib(num - 2, cache)) },
   )[num];
+  // ^^ and return the result so recursion can continue
 }
 ```
 
