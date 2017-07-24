@@ -116,11 +116,11 @@ Either way you decide to assign a cache key to the result of the function (as lo
 **A Great Gotcha**
 
 ```javascript
-  return Object.assign(
-    {}, //  << this is the important part - LOOK HERE!
-    cache,
-    { [num]: (fib(num - 1, cache) + fib(num - 2, cache)) },
-  )[num];
+return Object.assign(
+  {}, //  << this is the important part - LOOK HERE!
+  cache,
+  { [num]: (fib(num - 1, cache) + fib(num - 2, cache)) },
+)[num];
 ```
 
 If we merge `cache`, with the new result, into a new object, we essentially break our optimization and build a proper stack like the first fib we defined. This effectively brings us back to square one!
