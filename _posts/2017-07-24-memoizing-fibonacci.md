@@ -70,11 +70,15 @@ What is going on there? `||=` is very powerful in ruby. Essentially, if it alrea
 
 This is very helpful as `fib` goes down the recursive track and checks if it has already solved a problem or not.
 
-This ensures that the functions doesn't have to essentially start from scratch all over again!
+This ensures that the function doesn't have to start from scratch all over again!
 
 ### Javascript
 
-I am going to use ES6 here, just to keep things terse. The above ES5 example should be plenty to explain how `fib` works!
+I am going to use ES6 here, just to keep things terse. 
+
+There will be an ES5 example below as well :)
+
+The above ES5 example should be plenty to explain how `fib` works!
 
 ```javascript
 const fib = (num, cache = {}) => {
