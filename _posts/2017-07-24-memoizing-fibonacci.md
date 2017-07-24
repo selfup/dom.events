@@ -21,6 +21,8 @@ The problem is, we immediately see why tail call optimization is so important. W
 
 Ahh, well we create our own sort of optimization!
 
+### Basic Fib Implementation
+
 Here is an example of a basic `fib` function:
 
 ```javascript
@@ -44,6 +46,8 @@ Seems that the answer to life (**42**) is telling us something here.
 
 How can we possibly make **42** and other numbers like **900** run quickly? We have to tail call optimize the function itself.
 
+What this means is that we have to store the results of the recursion to avoid expanding our stack (_sounds scary I know!_).
+
 If you google `memoization in JavaScript` you will see some (what I consider) overly complex solutions. Here I will try to focus on memoizing kind of how `ruby` does it.
 
 Here is an example of non memoized and memoized ruby:
@@ -66,19 +70,15 @@ def memo_fib(n, cache = {})
 end
 ```
 
-What is going on there? `||=` is very powerful in ruby. Essentially, if it already equals something, just return what it equals, otherwise, make it equal something.
+What is going on there? `||=` is very powerful in ruby. Essentially, if **an assignment attempt** _already equals something_, just return what it equals, otherwise, make it equal something.
 
-This is very helpful as `fib` goes down the recursive track and checks if it has already solved a problem or not.
+This is very helpful as `fib` goes down the recursive stack because now it checks if it has already solved the same problem or not.
 
 This ensures that the function doesn't have to start from scratch all over again!
 
 ### Javascript
 
 I am going to use ES6 here, just to keep things terse. 
-
-There will be an ES5 example below as well :)
-
-The above ES5 example should be plenty to explain how `fib` works!
 
 ```javascript
 const fib = (num, cache = {}) => {
@@ -97,6 +97,8 @@ const fib = (num, cache = {}) => {
 
 Now this function can take **42**, **500**, **900**, **1000**, and so on!
 
+_Take note: This is not compiler level tail call optimization which ES6 does provide with certain flags in beta versions of Chrome._
+
 To be fair once you get near **2000**, it will start just returning `Infinity`. However this is a good way to show the power of being able to optimize a tail call ourselves, without having to do too much magic.
 
 Also instead of using `Object.assign` we could just overwrite the parameter directly, but this is ill advised.
@@ -107,6 +109,8 @@ If _that is your thing_ this is how you could do it:
 cache[n] = fib(num - 1, cache) + fib(num - 2, cache);
 return cache[n];
 ```
+
+Either way you assign a cache key to the result of the function (as long as you return the function result) you should be good to go.
 
 **Here is a way to do it in ES5 if** _that's your thing_:
 
