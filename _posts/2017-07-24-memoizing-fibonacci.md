@@ -38,7 +38,7 @@ Example: `fib(23);`
 
 _Now if you try_: `fib(42);`
 
-You _will_ wait..and wait..and then you will  finally get your result.
+You _will_ wait..and wait..and then you will finally get your result.
 
 Seems that the answer to life (**42**) is telling us something here.
 
