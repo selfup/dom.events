@@ -159,9 +159,11 @@ As you can see that is quite the code vomit, but it gets the job done if you don
 ## Overkill Terse
 
 ```javascript
-const fib = (n, c = {}) => (n < 2)
-  ? n
-  : c[n] || (() => Object.assign(c, {[n]: fib(n - 1, c) + fib(n - 2, c)})[n])();
+const fib = (num, cache = {}) => (num < 2)
+  ? num
+  : cache[num] || Object
+    .assign(cache, { [num]: (fib(num - 1, cache) + fib(num - 2, cache)) })
+      [num];
 ```
 
 Arrow function, ternary, `||`, IIFE, the works 😂
