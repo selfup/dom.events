@@ -5,4 +5,6 @@
 layout: home
 ---
 
-{% include ga.js %}
+{% if jekyll.environment == 'production' %}
+{% include ga.html %}
+{% endif %}
