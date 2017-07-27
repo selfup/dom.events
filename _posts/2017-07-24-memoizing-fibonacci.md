@@ -151,6 +151,16 @@ function fib(n, cache) {
 
 As you can see that is quite the code vomit, but it gets the job done if you don't have a transpiler.
 
+## Overkill Terse
+
+```javascript
+const fib = (n, c = {}) => (n < 2)
+  ? n
+  : c[n] || (() => Object.assign(c, {[n]: fib(n - 1, c) + fib(n - 2, c)})[n])();
+```
+
+Arrow function, ternary, `||`, IIFE, the works 😂
+
 ## Conclusion
 
 You don't have to be an evil genius to add your own tail call optimizations :)
