@@ -7,13 +7,9 @@ title: env-char-ruin-day
 
 After having worked on a branch for 2 weeks we were ready to push.
 
-The launch had a set date and a set launch time.
-
 We added some tokens for a new api and were ready to go.
 
-We ship, but the endpoints that used to work no longer worked.
-
-During a live demo...
+We start a live screen shared demo, but the endpoints that used to work no longer worked.
 
 ### What we tried
 
