@@ -4,7 +4,3 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
-
-{% if jekyll.environment == 'production' %}
-{% include ga.html %}
-{% endif %}
