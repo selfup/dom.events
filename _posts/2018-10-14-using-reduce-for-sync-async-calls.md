@@ -35,10 +35,10 @@ type('This is a sentence');
 ```
 
 1. First we grab the `h1`
-1. Then we write a simple function that writes to `innerText` after some time
+1. Then we write a function that writes to `innerText` after some time
 1. We wrap the `setTimeout` in a `Promise`
 1. We write a function called `type`
-1. It takes in a string and splits them by char
+1. It takes in a string and splits it by char
 1. Each char is then iterated over via the `reduce`
 1. We return a `Promise` of `writeChars` and tell the reduce to `resolve` said `Promise`
 1. Each char will wait `15ms` to be typed!
