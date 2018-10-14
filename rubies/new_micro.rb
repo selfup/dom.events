@@ -12,6 +12,6 @@ title:  #{title}
 Content
 "
 
-file = "./../_posts/#{current_date}-#{title}.md"
+file = "./_posts/#{current_date}-#{title}.md"
 
 File.write(file, default)
