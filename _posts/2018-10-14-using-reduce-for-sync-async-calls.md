@@ -5,7 +5,7 @@ title:  using-reduce-for-sync-async-calls
 
 # Using Reduce for Synchronizing Async Calls
 
-So let's say you need to make 4 api calls, one after the other. `forEach` and `map` won't wait for each async call to go through. However, if you form a `reduce` properly, it has to!
+So let's say you want to slowly write out a sentence. `forEach` and `map` won't wait for each async call to go through. However, if you form a `reduce` properly, it has to!
 
 In this example we will be writting text to an empty HTML element.
 
