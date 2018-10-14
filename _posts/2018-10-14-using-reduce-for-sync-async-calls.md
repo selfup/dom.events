@@ -22,7 +22,7 @@ const writeChars = (myText, char) => new Promise((resolve, reject) => {
   return setTimeout(() => {
     myText.innerText += char;
     resolve();
-  }, 15);
+  }, 25);
 });
 
 function type(sentence) {
@@ -41,7 +41,7 @@ type('This is a sentence');
 1. It takes in a string and splits it by char
 1. Each char is then iterated over via the `reduce`
 1. We return a `Promise` of `writeChars` and tell the reduce to `resolve` said `Promise`
-1. Each char will wait `15ms` to be typed!
+1. Each char will wait `25ms` to be typed!
 
 Here is a little bit more advanced CodePen:
 
