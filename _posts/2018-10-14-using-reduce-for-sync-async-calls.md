@@ -48,6 +48,8 @@ Here is a little bit more advanced CodePen:
 <p data-height="311" data-theme-id="0" data-slug-hash="ePBJOr" data-default-tab="js,result" data-user="selfup" data-pen-title="feedread" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/selfup/pen/ePBJOr/">feedread</a> by Regis Boudinot (<a href="https://codepen.io/selfup">@selfup</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Nothing crazy, just something we all run into.
+### Conclusion
+
+Nothing crazy, just something we all run into sometimes.
 
 Hope you enjoyed this little micro blog!
