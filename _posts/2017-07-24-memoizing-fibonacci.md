@@ -103,7 +103,7 @@ function fib(n, cache) {
     return n;
   } else {
     if (cache[n]) {
-      return cache[n]
+      return cache[n];
     } else {
       cache[n] = fib(n - 1, cache) + fib(n - 2, cache);
       return cache[n];
