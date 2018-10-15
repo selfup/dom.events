@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How a character in my .env ruined my day
+title: Env Files Need Proper Characters
 ---
 
 # How a character in my .env ruined my day
