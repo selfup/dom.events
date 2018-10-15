@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  lazy-redux-reducer
+title: Lazy Redux Reducer
 ---
 
 # A Very Lazy Redux Reducer

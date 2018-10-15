@@ -1,12 +1,12 @@
 # To use
 
-# ruby rubies/new_micro.rb Some-title-with-hyphens
+# ruby rubies/new_micro.rb some-title-with-hyphens
 # now a proper file name with enough boilerplate will be created
 
 current_date = Time.now.to_s.split(' ')[0]
 
 title = ARGV[0]
-post_title = title.split('-').join(' ')
+post_title = title.split('-').join(' ').capitalize
 post_title_name = title.downcase
 
 default = "---

@@ -5,10 +5,6 @@ date:   2017-07-23 20:43:44 -0600
 categories: domevents
 ---
 
-{% if jekyll.environment == 'production' %}
-{% include ga.html %}
-{% endif %}
-
 ### Test your JS knowledge
 
 _test code blocks in your dev tools console, or wherever :)_
