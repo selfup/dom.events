@@ -17,7 +17,7 @@ const lazyReducer = (state = {}, { type, data }) => {
     case 'LAZY':
       return {
         ...state,
-        ..data,
+        ...data,
       };
     default:
       return state;
@@ -45,7 +45,7 @@ export const setReduxState = ({ dispatch }) => (data = {}) => {
 
 ...
 
-const setProps = setReducState(this.props);
+const setProps = setReduxState(this.props);
 
 setProps({ anyKey: 'anyValue' });
 ```
