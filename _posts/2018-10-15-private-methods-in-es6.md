@@ -25,8 +25,11 @@ This made finding detailed tutorials kind of difficult.
 How to make private methods in an ES6 class
 First will be a gist of the original class, with all public facing methods.
 
+{% gist d6f7a226d79c99975675220cf7936e4e %}
 
 As you can see, nothing actually makes these methods private.
+
+{% gist 2c695fec4bc182fe92e37a2c7f6a14b2 %}
 
 Now, here is the real easy part. You make your methods as you please, wrap them in hard brackets, prepend an underscore (naming convention it seems) and then define the Symbols as constants above the class.
 
