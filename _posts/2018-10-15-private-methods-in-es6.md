@@ -10,15 +10,15 @@ Lessons learned from making my first npm package
 
 Decided to write a database in Javascript for server side developer freedom in NodeJS. ES6 is my preferred flavor of Javascript, so off I went. Here is what I learned from doing this in a weekend.
 
-Here is the repo: https://github.com/selfup/rejs
+Here is the repo: [https://github.com/selfup/rejs](https://github.com/selfup/rejs)
 
-The package on npm: https://www.npmjs.com/package/selfup-rejs/
+The package on npm: [https://www.npmjs.com/package/selfup-rejs/](https://www.npmjs.com/package/selfup-rejs/)
 
 Making a DB for the sake of learning is highly educational. Learned a ton about the fs module in node and how important it is to make your code readable and understandable.
 
-Josh Cheek found the time to refactor my code and make a nice pull request. He however was having trouble making methods private in the ES6 class that my library has. I had trouble doing it as well.
+[Josh Cheek](https://github.com/JoshCheek) found the time to refactor my code and make a nice pull request. He however was having trouble making methods private in the ES6 class that my library has. I had trouble doing it as well.
 
-Steve Kinney was kind enough to explain that Symbols were the answer in ES6 to make methods private. So off I went and read the few resources available to explain how it is done. Even though ES6 is technically last years standard, people seem to be quite slow at adopting it. Which is crazy, since ES7 is bound to be the standard this year now that ECMA is releasing a new version every year!
+[Steve Kinney](https://github.com/stevekinney) was kind enough to explain that Symbols were the answer in ES6 to make methods private. So off I went and read the few resources available to explain how it is done. Even though ES6 is technically last years standard, people seem to be quite slow at adopting it. Which is crazy, since ES7 is bound to be the standard this year now that ECMA is releasing a new version every year!
 
 This made finding detailed tutorials kind of difficult.
 
