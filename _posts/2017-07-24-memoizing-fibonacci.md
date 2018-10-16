@@ -5,20 +5,7 @@ date:   2017-07-23 22:43:44 -0600
 categories: domevents
 ---
 
-{% if jekyll.environment == 'production' %}
-{% include ga.html %}
-{% endif %}
-
-### Test your JS knowledge
-
-_test code blocks in your dev tools console, or wherever :)_
-
-<hr>
-<hr>
-<hr>
-<br>
-
-## Fibonacci
+# Fibonacci
 
 The classic, first introduction to recursion most of us know.
 
@@ -49,7 +36,7 @@ Seems that the answer to life (**42**) is telling us something here.
 
 ## Optimization
 
-How can we possibly make **42** and other numbers like **900** run quickly? We have to tail call optimize the function itself.
+How can we possibly make **42** and other numbers like **900** run quickly? We have to pseudo tail call optimize the function itself.
 
 What this means is that we have to store the results of the recursion to avoid expanding our stack (_sounds scary I know!_).
 
@@ -61,16 +48,12 @@ Here is an example of non memoized and memoized ruby:
 def fib(n)
   return n if n < 2
 
-  # ruby has implicit returns
-  # so no need to say return on the last line here
   fib(n - 1) + fib(n - 2)
 end
 
 def memo_fib(n, cache = {})
   return n if n < 2
 
-  # same return rule applies here
-  # we either return existing cache, or add a new key/value
   cache[n] ||= fib(n - 1, cache) + fib(n - 2, cache)
 end
 ```
@@ -83,21 +66,22 @@ This ensures that the function doesn't have to start from scratch all over again
 
 ### Javascript
 
-I am going to use ES6 here, just to keep things terse. 
-
 ```javascript
 const fib = (num, cache = {}) => {
-  if (num < 2) return num;
+  if (num < 2) {
+    return num;
+  }
 
   // if the cached result exists, return the cached result
-  if (cache[num]) return cache[num];
+  if (cache[num]) {
+    return cache[num];
+  }
 
   // otherwise, create a new entry in the cache with the new result
-  return Object.assign(
-    cache,
-    { [num]: (fib(num - 1, cache) + fib(num - 2, cache)) },
-  )[num];
-  // ^^ and return the result so recursion can continue
+  cache[num] = fib(num - 1, cache) + fib(num - 2, cache);
+
+  // return the result so recursion can continue
+  return cache[num];
 }
 ```
 
@@ -107,33 +91,7 @@ _Take note: This is not a compiler level tail call optimization which ES6 does p
 
 To be fair once you get near **2000**, it will start just returning `Infinity`. However this is a good way to show the power of being able to optimize a tail call ourselves, without having to do too much magic.
 
-Also instead of using `Object.assign` we could just overwrite the parameter directly, but this is ill advised.
-
-If you don't have a transpiler this is how you could do it:
-
-```javascript
-cache[n] = fib(num - 1, cache) + fib(num - 2, cache);
-return cache[n];
-```
-
 Either way you decide to assign a cache key to the result of the function (as long as you return the function result) you should be good to go.
-
-
-**A Great Gotcha**
-
-```javascript
-return Object.assign(
-  {}, //  << this is the important part - LOOK HERE!
-  cache,
-  { [num]: (fib(num - 1, cache) + fib(num - 2, cache)) },
-)[num];
-```
-
-If we merge `cache`, with the new result, into a new object, we essentially break our optimization and build a proper stack like the first fib we defined. This effectively brings us back to square one!
-
-Instead of recycling, we make a new object everytime and collect the old garbage. That is not what we want to do here :P
-
-Just be aware of this gotcha and understand why it deoptimizes our code :)
 
 **Here is a way to do it in ES5**:
 
@@ -145,7 +103,7 @@ function fib(n, cache) {
     return n;
   } else {
     if (cache[n]) {
-      return cache[n]
+      return cache[n];
     } else {
       cache[n] = fib(n - 1, cache) + fib(n - 2, cache);
       return cache[n];
@@ -154,20 +112,6 @@ function fib(n, cache) {
 }
 ```
 
-As you can see that is quite the code vomit, but it gets the job done if you don't have a transpiler.
-
-## Overkill Terse
-
-```javascript
-const fib = (num, cache = {}) => (num < 2)
-  ? num
-  : cache[num] || Object
-    .assign(cache, { [num]: (fib(num - 1, cache) + fib(num - 2, cache)) })
-      [num];
-```
-
-Arrow function, ternary, `||`, IIFE, the works 😂
-
 ## Conclusion
 
-You don't have to be an evil genius to add your own tail call optimizations :)
+Recursion is powerful until it is not. Finding ways to memoize is an extremely powerful approach to optimizing your code!

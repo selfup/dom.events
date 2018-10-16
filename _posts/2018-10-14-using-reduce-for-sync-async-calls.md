@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  using-reduce-for-sync-async-calls
+title: Using Reduce for Synchronizing Async Calls
 ---
 
 # Using Reduce for Synchronizing Async Calls

@@ -5,10 +5,6 @@ date:   2017-12-30 14:43:44 -0600
 categories: domevents
 ---
 
-{% if jekyll.environment == 'production' %}
-{% include ga.html %}
-{% endif %}
-
 # Integrating Hyperapp Into Legacy MVCs
 
 So you have discovered the wonderful world of Hyperapp and you want to use it

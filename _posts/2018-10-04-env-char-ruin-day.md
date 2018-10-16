@@ -1,9 +1,9 @@
 ---
 layout: post
-title: env-char-ruin-day
+title: Env Files Need Proper Characters
 ---
 
-# How a space in my .env ruined my day
+# How a character in my .env ruined my day
 
 After having worked on a branch for 2 weeks we were ready to push.
 
@@ -21,6 +21,8 @@ Changing hostname and rebooting with yet another port plugged in.
 
 ### Conclusion
 
-My keyboard sometimes seems to write random characters (need to update firmware) and apparently invisible characters are a thing.
+A Slack copy paste gone wrong.
 
 We changed the .env from scratch and everything was good to go again.
+
+Make sure to always use code blocks when sharing configs!
