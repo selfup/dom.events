@@ -16,10 +16,11 @@
 title: Dom Events
 description: >
   Stuff and Things!
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+base_url: ""
+url: "https://dom.events"
 twitter_username: rboudinot
 github_username:  selfup
+linkedin_username: regisboudinot
 
 # Build settings
 markdown: kramdown
