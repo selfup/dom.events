@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Integrating Hyperapp Into Legacy MVCs"
+title:  "JS: Integrating Hyperapp Into Legacy MVCs"
 date:   2017-12-30 14:43:44 -0600
 categories: domevents
 ---
@@ -172,4 +172,4 @@ never mix jQuery inside the VDOM!
 
 ### Conclusion Part 1
 
-The big advantage here is that Because we can sprinkle in little apps one by one, eventually all of the components can get merged once a certain route is finished being completely converted, and then you can start utilizing a frontend router and just keep the backend as an Auth mecahnism and an API.
+The big advantage here is that because we can sprinkle in little apps one by one, eventually all of the components can get merged once a certain route is finished being completely converted, and then you can start utilizing a frontend router and just keep the backend as an Auth mecahnism and an API.

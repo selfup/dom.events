@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  Bash exit code conditionals
+title:  'Bash: exit code conditionals'
 ---
 
-# Bash exit code conditionals
+# Exit code conditionals
 
 *TIL* about `$?` :thinking:
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Neat tool called entr
+title:  'Shell: Neat tool called entr'
 ---
 
 # Neat tool called entr
