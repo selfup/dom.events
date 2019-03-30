@@ -11,7 +11,7 @@ post_title_name = title.downcase
 
 default = "---
 layout: post
-title:  #{post_title}
+title:  '#{post_title}'
 ---
 
 # #{post_title}
