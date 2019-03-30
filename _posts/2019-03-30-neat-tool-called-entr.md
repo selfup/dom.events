@@ -7,6 +7,10 @@ title:  'Shell: Neat tool called entr'
 
 *TIL* about a command line util called `entr` :tada:
 
+_mac_: `brew install entr`
+
+_ubuntu_: `sudo apt install entr`
+
 This will watch any filename you pipe into entr. Then it can run any script you pass it with `-s` or just completely reload a process (ctrl - c and start again) using the `-r` flag.
 
 Perfect for scripting or spiking parsing weird payloads :rocket:
