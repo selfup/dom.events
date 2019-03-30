@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  Elixir native terminal colors
+title:  Elixir output terminal colors
 ---
 
-# Elixir native terminal colors
+# Elixir output terminal colors
 
 So if you are ever in the mood to write a CLI or make your logs look real nice, Elixir has a native `IO.ANSI` module that has a bunch of nice methods!
 
