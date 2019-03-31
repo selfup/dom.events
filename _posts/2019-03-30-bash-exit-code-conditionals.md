@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  'Bash: exit code conditionals'
+title:  'Micro: exit code conditionals in Bash'
 ---
 
 # Exit code conditionals

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  'Elixir: output terminal colors'
+title:  'Micro: Output terminal colors in Elixir'
 ---
 
 # Output terminal colors

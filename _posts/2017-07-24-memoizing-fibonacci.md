@@ -5,7 +5,7 @@ date:   2017-07-23 22:43:44 -0600
 categories: domevents
 ---
 
-# Learn to memoize JS with Fibonacci
+# Learn to memoize in JS with Fibonacci
 
 The classic, first introduction to recursion most of us know.
 

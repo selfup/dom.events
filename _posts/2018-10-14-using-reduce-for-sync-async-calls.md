@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'JS: Using Reduce for Synchronizing Async Calls'
+title: 'Micro: Using Reduce for Synchronizing Async Calls'
 ---
 
 # Using Reduce for Synchronizing Async Calls

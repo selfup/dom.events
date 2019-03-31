@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  'Shell: Neat tool called entr'
+title:  'Micro: Neat command line tool called entr'
 ---
 
 # Neat tool called entr
