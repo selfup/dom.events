@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "JS: Integrating Hyperapp Into Legacy MVCs"
+title:  "Integrating Hyperapp Into Legacy MVCs"
 date:   2017-12-30 14:43:44 -0600
 categories: domevents
 ---
