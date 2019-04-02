@@ -11,7 +11,7 @@ So one day my dad told me he wanted to have a way to click a file or a button an
 
 I made a little template file for him in Powershell, where he could just change two variables and would be ready to go!
 
-Here is the repo: https://github.com/selfup/icom-cmd
+Here is the repo: [icom-cmd](https://github.com/selfup/icom-cmd)
 
 #### Over USB?
 
@@ -71,4 +71,4 @@ Eventually I ended up building an exectuable in go/js that he could run that has
 
 Golang was actually great for this. Pretty much everything in go is a byte array of some kind :joy:, so it was a great way to get comfortable with the lanugage!
 
-Here is the repo for that project: https://github.com/selfup/hmrcmd
+Here is the repo for that project: [hmrcmd](https://github.com/selfup/hmrcmd)
