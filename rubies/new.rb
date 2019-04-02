@@ -10,13 +10,12 @@ current_date = Time.now.to_s.split(' ')[0]
 title = ARGV[0]
 post_title = title.split('-').join(' ').capitalize
 main_header = "#{post_title}".freeze
-post_title_name = title.downcase
 
 case ARGV[1]
 when '-m'
-  post_title = "Micro: #{post_title_name}"
+  post_title = "Micro: #{post_title}"
 when '-l'
-  post_title = "Long: #{post_title_name}"
+  post_title = "Long: #{post_title}"
 else
 
 end
@@ -26,11 +25,11 @@ layout: post
 title:  '#{post_title}'
 ---
 
-# #{post_title_name}
+# #{post_title}
 
 Content
 "
 
-file = "_posts/#{current_date}-#{post_title_name}.md"
+file = "_posts/#{current_date}-#{post_title}.md"
 
 File.write(file, default)
