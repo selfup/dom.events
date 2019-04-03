@@ -27,6 +27,6 @@ else
 fi
 ```
 
-We have the grep run, check for the exit code of the **latest operation** and if it equals `"0"`, then we print our known fact. Otherwise we print what the file contains.
+We have the grep run, check for the exit code of the **latest operation** and if it equals `"0"`, then we print our known fact. Otherwise we print that we guessed wrong.
 
 Just a neat little trick. Should be useful for a lot of things! :tada:
