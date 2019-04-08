@@ -20,9 +20,11 @@ end)
 
 However **TIL** about `Task.async_stream/3`!
 
-You can go read about it here: [Task.async_stream/3](https://hexdocs.pm/elixir/Task.html#async_stream/5)
+You can go read about it here: [Task.async_stream/3](https://hexdocs.pm/elixir/Task.html#async_stream/3)
 
-By default the maximum number of tasks to run at the same time will equal the result of `System.schedulers_online`. This value should be all logical cores on your machine (physical and hyperthreaded).
+Runs through your enum in chunks (equal to the number of logical cores on your machine) to execute the tasks as fast as possible! :rocket:
+
+By default the maximum number of tasks to run at the same time will equal the result of `System.schedulers_online`.
 
 Here it is being used in comparison to the earlier snippet:
 
