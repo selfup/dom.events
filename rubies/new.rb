@@ -7,7 +7,7 @@
 
 current_date = Time.now.to_s.split(' ')[0]
 
-title = ARGV[0]
+title = ARGV[0].freeze
 post_title = title.split('-').join(' ').capitalize
 main_header = "#{post_title}".freeze
 
@@ -25,11 +25,11 @@ layout: post
 title:  '#{post_title}'
 ---
 
-# #{post_title}
+# #{main_header}
 
 Content
 "
 
-file = "_posts/#{current_date}-#{post_title}.md"
+file = "_posts/#{current_date}-#{title}.md"
 
 File.write(file, default)
