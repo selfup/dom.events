@@ -32,12 +32,10 @@ echo 'main.go' | entr -sr \
   'docker stop $(docker ps -aq) && docker-compose up --build'
 ```
 
-***
-
 So useful!
 
 #### Repo with a bunch of langs
 
-I made a repo so i could script in a bunch of different languages with watch scripts for each one!
+I made a repo so I could script in a bunch of different languages with watch scripts for each one!
 
 Check it out: [dev.random](https://github.com/selfup/dev.random)
