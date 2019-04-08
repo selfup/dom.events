@@ -7,7 +7,7 @@ title:  'Micro: Task async stream in elixir'
 
 Ok so for a while now I have been using `Task.async/1` and `Task.await/1` with piped `Enum.map`(s) to get some concurrent work done.
 
-_Imagine `api_call/1` exists and make an HTTP request somewhere_
+_Imagine `api_call/1` exists and makes an HTTP request somewhere_
 
 ```elixir
 0..20
