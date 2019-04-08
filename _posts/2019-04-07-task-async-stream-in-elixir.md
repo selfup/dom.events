@@ -22,6 +22,8 @@ However **TIL** about `Task.async_stream/3`!
 
 You can go read about it here: [Task.async_stream/3](https://hexdocs.pm/elixir/Task.html#async_stream/5)
 
+By default the maximum number of tasks to run at the same time will equal the result of `System.schedulers_online`. This value should be all logical cores on your machine (physical and hyperthreaded).
+
 Here it is being used in comparison to the earlier snippet:
 
 ```elixir
@@ -32,8 +34,6 @@ Here it is being used in comparison to the earlier snippet:
 ```
 
 Much better! :tada:
-
-By default the maximum number of tasks to run at the same time will equal the result of `System.schedulers_online`. This value should be all logical cores on your machine (physical and hyperthreaded).
 
 Reminds me of `par_iter` in the [Rayon](https://crates.io/crates/rayon) Rust crate: [par_iter](https://docs.rs/rayon/0.6.0/rayon/par_iter/index.html)
 
