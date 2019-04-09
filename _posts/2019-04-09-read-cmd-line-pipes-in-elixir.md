@@ -21,6 +21,7 @@ git checkout -b feature-new-branch \
   && git branch \
   | grep -v '* master' \
   | grep 'feature-' \
+  | tr -d '\n' \
   | elixir -e 'IO.read(:all) |> String.trim("\n") \
   |> fn args -> "git branch -D #{args}" end.() \
   |> to_charlist |> :os.cmd |> IO.puts'
@@ -53,3 +54,17 @@ I really do enjoy using ruby to do this as well, but you end up using a ton of s
 Otherwise your "_one liner_" becomes quites long.
 
 I am sure `awk` and `sed` can continue to be used instead, but sometimes using elixir is more fun! :tada:
+
+To be fair using `tr` and `xargs` this problem is solved in a much simpler fashion:
+
+```bash
+git checkout -b feature-new-branch \
+  && git checkout master \
+  && git branch \
+  | grep -v '* master' \
+  | grep 'feature-' \
+  | tr -d '\n' \
+  git branch -D
+```
+
+:joy:
