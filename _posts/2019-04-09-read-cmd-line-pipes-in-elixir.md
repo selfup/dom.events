@@ -64,7 +64,7 @@ git checkout -b feature-new-branch \
   | grep -v '* master' \
   | grep 'feature-' \
   | tr -d '\n' \
-  xargs git branch -D
+  | xargs git branch -D
 ```
 
 :joy:
