@@ -5,7 +5,7 @@ title: 'Micro: Read cmd line pipes in elixir'
 
 # Read cmd line pipes in elixir
 
-Say you want to delete all remotely merged branches with the name `feature-`.
+Say you want to delete all branches that start with `feature-`.
 
 You can use: [IO.read](https://hexdocs.pm/elixir/IO.html#read/2)
 
@@ -22,7 +22,7 @@ git checkout -b feature-new-branch \
   | grep -v '* master' \
   | grep 'feature-' \
   | elixir -e 'IO.read(:all) |> String.trim("\n") \
-  |> fn args -> "git branch -d #{args}" end.() \
+  |> fn args -> "git branch -D #{args}" end.() \
   |> to_charlist |> :os.cmd |> IO.puts'
 ```
 
