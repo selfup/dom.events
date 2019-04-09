@@ -21,7 +21,9 @@ git checkout -b feature-new-branch \
   && git branch \
   | grep -v '* master' \
   | grep 'feature-' \
-  | elixir -e 'IO.read(:all) |> String.trim("\n") |> fn args -> "git branch -d #{args}" end.() |> to_charlist |> :os.cmd |> IO.puts'
+  | elixir -e 'IO.read(:all) |> String.trim("\n") \
+  |> fn args -> "git branch -d #{args}" end.() \
+  |> to_charlist |> :os.cmd |> IO.puts'
 ```
 
 So now you can start piping your heart out!
@@ -29,10 +31,12 @@ So now you can start piping your heart out!
 You might notice:
 
 ```elixir
-IO.read(:all) |> String.trim("\n") |> fn args -> "git branch -d #{args}" end.()
+IO.read(:all)
+|> String.trim("\n")
+|> fn args -> "git branch -d #{args}" end.()
 ```
 
-Anon func that takes in the pipe output and executes (think IIFE in JS).
+There is an anonymous function that takes in the pipe output and executes itself (think IIFE in JS).
 
 This is the easiest workaround to not making a variable. Otherwise you would:
 
@@ -40,10 +44,11 @@ This is the easiest workaround to not making a variable. Otherwise you would:
 i = IO.read(:all) |> String.trim("\n"); "git branch -d #{i}"
 ```
 
-So now you could shrink it down to:
+So now you could shrink the whole script down to:
 
 ```elixir
-i = IO.read(:all) |> String.trim("\n"); "git branch -d #{i}" |> to_charlist |> :os.cmd |> IO.puts
+i = IO.read(:all) |> String.trim("\n");
+"git branch -d #{i}" |> to_charlist |> :os.cmd |> IO.puts
 ```
 
 _sometimes it makes more sense to do this_
