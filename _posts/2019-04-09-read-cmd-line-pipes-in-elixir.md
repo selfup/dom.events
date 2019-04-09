@@ -38,20 +38,7 @@ IO.read(:all)
 
 There is an anonymous function that takes in the pipe output and executes itself (think IIFE in JS).
 
-This is the easiest workaround to not making a variable. Otherwise you would:
-
-```elixir
-i = IO.read(:all) |> String.trim("\n"); "git branch -d #{i}"
-```
-
-So now you could shrink the whole script down to:
-
-```elixir
-i = IO.read(:all) |> String.trim("\n");
-"git branch -d #{i}" |> to_charlist |> :os.cmd |> IO.puts
-```
-
-_sometimes it makes more sense to do this_
+This is the easiest workaround to not making a variable! :pray:
 
 Here is the output:
 
