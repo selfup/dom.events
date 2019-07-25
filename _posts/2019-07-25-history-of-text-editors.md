@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'History of text editors'
-published: false
+published: true
 ---
 
 # History of text editors
@@ -40,6 +40,8 @@ Punch it in wrong, yep, new one
 
 Don't drop cards when you have 1000's of them
 
+[A Stack of Cards](http://www.terminally-incoherent.com/img/rnr/programming.jpg)
+
 ## Teletype (tty)
 
 type on keyboard
@@ -47,6 +49,8 @@ type on keyboard
 computer processes
 
 paper prints output
+
+[no searchable history, no scrolling, just pure chaos](https://en.wikipedia.org/wiki/File:Telex_machine_ASR-32.jpg)
 
 ## Dumb terminals
 
@@ -56,6 +60,8 @@ computer processes
 
 characters print out on new line
 
+[IBM Terminal](https://vintagecomputer.ca/wp-content/uploads/2017/02/IBM-3277-terminal-profile-300x200.jpg)
+
 ## TECO
 
 1960s
@@ -63,6 +69,8 @@ characters print out on new line
 Had it's own DSL (IF/OR/etc..)
 
 Really complex macros were written and looked really bad
+
+[Wiki](<https://en.wikipedia.org/wiki/TECO_(text_editor)>)
 
 ## ed
 
@@ -92,12 +100,22 @@ now you can just type: `h` and it will tell you the error
 
 very commonly used in bash scripts
 
-extremely powerful (not as cool as
-`awk` though)
+extremely powerful (not as cool as `awk` though)
+
+[examples of ed and sed](http://peterscott.eu/unix/edsed.html)
+
+## cat and echo
+
+it could work, but RIP
 
 ## Modal vs. Modeless
 
 write vs read (mode)
+
+vim/emacs vs. sed/ed/teco
+
+[vim picture 1](https://miro.medium.com/max/2400/1*j4jvP-ihFi0H06uDJX806w.png)
+[vim pictures 2](https://statico.github.io/images/vim/vim3.png)
 
 ##### Hand tools vs. wizards
 
@@ -121,24 +139,28 @@ however doctors go to school for a very long time..
 
 Terrible experience.
 
-Well then there was `ex`.
+Well then there was `ex`
 
-Then someone made something that would repaint the screen on every stroke. That editor was called
-`vi`
+Then someone made something that would repaint the screen on every stroke. That editor was called `vi`
 
-Then someone improved `vi` and made
-`vim`
+Then someone improved `vi` and made `vim`
 
 ## TECO
 
 Remember the super macro editor?
 Yea well EMACS came from Teco
 
+[EMACS](https://www.gnu.org/software/emacs/)
+
+[Email in EMACS](http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/)
+
 ## A lot of our tools were written a long time ago
 
 Why does vim have such weird keybindings?
 
-Well the ADM-3a wsa the most popular machine/keyboard during the time.
+[VIM Picture]()
+
+Well the [ADM-3a](https://upload.wikimedia.org/wikipedia/commons/7/77/Adm3aimage.jpg) wsa the most popular machine/keyboard during the time.
 
 Build in arrows on `hjkl`
 
@@ -146,7 +168,7 @@ Esc was next to Q
 
 `~` was on the Home key
 
-## Write an Editor
+## How Would One Write an Editor
 
 #### SRP (Single Responsibility Principle)
 
@@ -188,13 +210,13 @@ Store a pointer to the rest of the list prior to cutting.
 
 ## The Mac
 
+[PIC](https://cdn.macrumors.com/article-new/2019/01/macintosh-1984-800x509.jpg)
+
 Jef Raskin:
 
 First GUI text eiditing to consumer market
 
 Douglas Engelbart - 1968 -> Jef Raskin
-
-## Cannon Cat
 
 ## Rob Pike
 
@@ -206,11 +228,30 @@ Structural Regular Expressions. Instead of basing the editor off of line, based 
 
 `plan9` wrote an OS but made unix even more powerful
 
+[plan9 and golang logos](https://blog.golang.org/gopher)
+
 First shared network drives
 
 Then wrote `acme` another text editor!
 
+[ACME](<https://en.wikipedia.org/wiki/Acme_(text_editor)#/media/File:Acme.png>)
+
 Rob Pike/Ken Thompson/Dennis Ritchie/Brian Kernighan/Bjarne Stroustrup (creator of C++)
+
+## TMUX
+
+tmux as a screen multiplexer, similar to GNU Screen. Essentially that means that tmux lets you tile window panes in a command-line environment. This in turn allows you to run, or keep an eye on, multiple programs within one terminal.
+
+What can you do with tmux???
+
+PAIR OVER THE NETWORK
+
+PANES
+
+ALL OF THE THINGS
+
+[Blog Post on TMUX](https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340)
+[Tmux Cheat Cheat](https://tmuxcheatsheet.com/)
 
 ## Next time you build a development tool
 
