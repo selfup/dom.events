@@ -18,17 +18,21 @@ import (
 )
 
 func main() {
+  // boot up tcp server
 	listener, err := net.Listen("tcp", "127.0.0.1:8080")
 	if err != nil {
 		log.Fatal("tcp server listener error:", err)
 	}
 
+  // block main and listen to all incoming connections
 	for {
+    // accept new connection
 		conn, err := listener.Accept()
 		if err != nil {
 			log.Fatal("tcp server accept error", err)
 		}
 
+    // spawn off goroutine to able to accept new connections
 		go handleConnection(conn)
 	}
 }
@@ -52,7 +56,7 @@ Now let us define this handle connection. Comments in the code will explain the 
 
 ```go
 func handleConnection(conn net.Conn) {
-  // read buffer from client after enter is hit
+	// read buffer from client after enter is hit
 	bufferBytes, err := bufio.NewReader(conn).ReadBytes('\n')
 
 	if err != nil {
@@ -63,17 +67,17 @@ func handleConnection(conn net.Conn) {
 		return
 	}
 
-  // convert bytes from buffer to string
-  message := string(bufferBytes)
-  // get the remote address of the client
-  clientAddr := conn.RemoteAddr().String()
-  // format a response
+	// convert bytes from buffer to string
+	message := string(bufferBytes)
+	// get the remote address of the client
+	clientAddr := conn.RemoteAddr().String()
+	// format a response
 	response := fmt.Sprintf(message + " from " + clientAddr + "\n")
 
-  // have server print out important information
+	// have server print out important information
 	log.Println(response)
 
-  // let the client know what happened
+	// let the client know what happened
 	conn.Write([]byte("you sent: " + response))
 
 	// recursive func to handle io.EOF for random disconnects
@@ -110,31 +114,22 @@ func main() {
 }
 
 func handleConnection(conn net.Conn) {
-	// read buffer from client after enter is hit
 	bufferBytes, err := bufio.NewReader(conn).ReadBytes('\n')
 
 	if err != nil {
 		log.Println("client left..")
 		conn.Close()
-
-		// escape recursion
 		return
 	}
 
-	// convert bytes from buffer to string
 	message := string(bufferBytes)
-	// get the remote address of the client
 	clientAddr := conn.RemoteAddr().String()
-	// format a response
 	response := fmt.Sprintf(message + " from " + clientAddr + "\n")
 
-	// have server print out important information
 	log.Println(response)
 
-	// let the client know what happened
 	conn.Write([]byte("you sent: " + response))
 
-	// recursive func to handle io.EOF for random disconnects
 	handleConnection(conn)
 }
 ```
