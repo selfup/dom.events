@@ -17,14 +17,13 @@ import (
 	"net"
 )
 
-
 func main() {
-  listener, err := net.Listen("tcp", "127.0.0.1:8080")
+	listener, err := net.Listen("tcp", "127.0.0.1:8080")
 	if err != nil {
 		log.Fatal("tcp server listener error:", err)
-  }
+	}
 
-  for {
+	for {
 		conn, err := listener.Accept()
 		if err != nil {
 			log.Fatal("tcp server accept error", err)
@@ -54,22 +53,22 @@ func handleConnection(conn net.Conn) {
 	bufferBytes, err := bufio.NewReader(conn).ReadBytes('\n')
 
 	if err != nil {
-    log.Println(clientAddr, "client left..")
-    conn.Close()
+		log.Println(clientAddr, "client left..")
+		conn.Close()
 
-    // escape recursion
+		// escape recursion
 		return
 	}
 
 	message := string(bufferBytes)
 	clientAddr := conn.RemoteAddr().String()
-  response := fmt.Sprintf(message + " from " + clientAddr + "\n")
+	response := fmt.Sprintf(message + " from " + clientAddr + "\n")
 
-  log.Println(response)
+	log.Println(response)
 
-  conn.Write([]byte("you sent: "+response))
+	conn.Write([]byte("you sent: " + response))
 
-  // recursive func to handle io.EOF for random disconnects
-  handleConnection(conn)
+	// recursive func to handle io.EOF for random disconnects
+	handleConnection(conn)
 }
 ```
