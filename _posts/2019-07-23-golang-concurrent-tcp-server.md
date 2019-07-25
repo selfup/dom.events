@@ -18,21 +18,21 @@ import (
 )
 
 func main() {
-  // boot up tcp server
+	// boot up tcp server
 	listener, err := net.Listen("tcp", "127.0.0.1:8080")
 	if err != nil {
 		log.Fatal("tcp server listener error:", err)
 	}
 
-  // block main and listen to all incoming connections
+	// block main and listen to all incoming connections
 	for {
-    // accept new connection
+		// accept new connection
 		conn, err := listener.Accept()
 		if err != nil {
 			log.Fatal("tcp server accept error", err)
 		}
 
-    // spawn off goroutine to able to accept new connections
+		// spawn off goroutine to able to accept new connections
 		go handleConnection(conn)
 	}
 }
