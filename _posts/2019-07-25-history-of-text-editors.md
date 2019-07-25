@@ -7,7 +7,7 @@ title: 'History of text editors'
 
 These notes were taken from a ruby conf video!
 
-String Theory and Time Travel: the humble text editor by Colin Fulton: https://www.youtube.com/watch?v=zaql_NwlO18
+[String Theory and Time Travel: the humble text editor by Colin Fulton](https://www.youtube.com/watch?v=zaql_NwlO18)
 
 ## Who _loves_ their text editor?
 
