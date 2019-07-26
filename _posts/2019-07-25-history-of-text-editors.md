@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'History of text editors'
-published: true
+published: false
 ---
 
 # History of text editors
