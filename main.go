@@ -17,7 +17,7 @@ func main() {
 	flag.StringVar(&postType, "type", "regular", "type of blog post (micro/long/regular)")
 
 	var postTitle string
-	flag.StringVar(&postTitle, "title", "", "title of blog post")
+	flag.StringVar(&postTitle, "title", "", "title of blog post - must be dash delimited")
 
 	var postPublished string
 	flag.StringVar(&postPublished, "publish", "false", "if post should be available to be seen")
@@ -35,7 +35,7 @@ func main() {
 }
 
 func newPost(postType string, postTitle string, postPublished string) {
-	if postTitle == "" {
+	if postTitle == "" || !strings.Contains(postTitle, "-") {
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
