@@ -14,22 +14,10 @@ Bundle once all good:
 
 Run jekyll server:
 
-`./scripts/start.sh`
+`bundle exec jekyll serve`
 
 Write new blog post:
 
-`./scripts/new.sh 'post-title' <optional_flags_please_check-new.rb-in_rubies_directory>`
+`go run main.go -title='post-title'`
 
-_OR_
-
-`ruby rubies/new.rb <optional_flag_please_check-new.rb-for_more_info>`
-
-<!--
-
-For building in Production, cat this file and grep the output
-
-cat README.md | grep jek
-
-JEKYLL_ENV=production jekyll build
-
--->
+If you want to see optional flags just run `go run main.go -h`
