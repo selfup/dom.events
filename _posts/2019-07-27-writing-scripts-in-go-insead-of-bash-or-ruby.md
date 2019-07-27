@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Writing Scripts In Go Insead Of Bash Or Ruby
+title: Writing Scripts In Go Instead Of Bash Or Ruby
 published: true
 ---
 
-# Writing Scripts In Go Insead Of Bash Or Ruby
+# Writing Scripts In Go Instead Of Bash Or Ruby
 
 As I have been writing more Go lately, I have found myself using Go as a scripting language more and more.
 
