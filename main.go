@@ -20,7 +20,7 @@ func main() {
 	flag.StringVar(&postTitle, "title", "", "title of blog post - must be dash delimited")
 
 	var postPublished string
-	flag.StringVar(&postPublished, "publish", "false", "if post should be available to be seen")
+	flag.StringVar(&postPublished, "publish", "false", "if post should be available to be seen (true/false)")
 
 	flag.Parse()
 
