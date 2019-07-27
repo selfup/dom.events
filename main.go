@@ -43,24 +43,25 @@ func newPost(postType string, postTitle string, postPublished string) {
 	postTime := strings.Split(time.Now().String(), " ")[0]
 	postHeader := []string{"---", "layout: post"}
 	cleanTitle := strings.Title(strings.ReplaceAll(postTitle, "-", " "))
+	var headerTitle string
 
 	if strings.ToLower(postType) == "micro" {
-		headerTitle := fmt.Sprintf("title: Micro: %s", cleanTitle)
+		headerTitle = fmt.Sprintf("title: Micro: %s", cleanTitle)
 
 		postHeader = append(postHeader, headerTitle)
 	} else if strings.ToLower(postType) == "long" {
-		headerTitle := fmt.Sprintf("title: Long: %s", cleanTitle)
+		headerTitle = fmt.Sprintf("title: Long: %s", cleanTitle)
 
 		postHeader = append(postHeader, headerTitle)
 	} else {
-		headerTitle := fmt.Sprintf("title: %s", cleanTitle)
+		headerTitle = fmt.Sprintf("title: %s", cleanTitle)
 
 		postHeader = append(postHeader, headerTitle)
 	}
 
 	postHeader = append(postHeader, "published: "+postPublished)
 	postHeader = append(postHeader, "---")
-	postHeader = append(postHeader, "\n# "+postTitle+"\n"+"\n_Content_")
+	postHeader = append(postHeader, "\n# "+cleanTitle+"\n"+"\n_Content_")
 
 	writeLines(postHeader, "_posts/"+postTime+"-"+postTitle+".md")
 }
