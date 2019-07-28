@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Writing A TCP Client In Go
-published: false
+published: true
 ---
 
 # Writing A TCP Client In Go
