@@ -28,34 +28,34 @@ import (
 )
 
 func main() {
-  // ip and port of TCP server
-  ip := "127.0.0.1"
+	// ip and port of TCP server
+	ip := "127.0.0.1"
 	port := "8081"
 
-  // format ip and port
+	// format ip and port
 	addr := ip + ":" + port
 
-  // dial into the tcp server and have access to the connection via `conn`
+	// dial into the tcp server and have access to the connection via `conn`
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-  // block main() and set up a reader for stdin to read inputs from the shell
+	// block main() and set up a reader for stdin to read inputs from the shell
 	for {
 		reader := bufio.NewReader(os.Stdin)
 
-    // grab all text prior to hitting enter
+		// grab all text prior to hitting enter
 		text, err := reader.ReadString('\n')
 		if err != nil {
 			log.Fatal(err)
 		}
 
-    // send over payload to the connection
+		// send over payload to the connection
 		fmt.Fprintf(conn, text+"\n")
 
-    // read the response from the server
-    // if you modified your server to not send a response you can omit everything below
+		// read the response from the server
+		// if you modified your server to not send a response you can omit everything below
 		message, err := bufio.NewReader(conn).ReadString('\n')
 		if err != nil {
 			log.Fatal(err)
@@ -80,8 +80,8 @@ I have only added comments where we add new functionality:
 package main
 
 import (
-  "bufio"
-  "flag"
+	"bufio"
+	"flag"
 	"fmt"
 	"log"
 	"net"
@@ -89,20 +89,20 @@ import (
 )
 
 func main() {
-  var ip string
-  // make a CLI flag for the IP address
-  // go run main.go -ip=10.0.0.42
-  // default is "127.0.0.1"
-  flag.StringVar(&ip, "ip", "127.0.0.1", "ip addr of TCP server")
+	var ip string
+	// make a CLI flag for the IP address
+	// go run main.go -ip=10.0.0.42
+	// default is "127.0.0.1"
+	flag.StringVar(&ip, "ip", "127.0.0.1", "ip addr of TCP server")
 
-  var port string
-  // make a CLI flag for the IP address
-  // go run main.go -port=9000
-  // default is "8081"
-  flag.StringVar(&port, "port", "8081", "port of TCP server")
+	var port string
+	// make a CLI flag for the IP address
+	// go run main.go -port=9000
+	// default is "8081"
+	flag.StringVar(&port, "port", "8081", "port of TCP server")
 
-  // full custom use of both ip and port: go run main.go -ip=10.0.0.42 -port=9000
-  flag.Parse()
+	// full custom use of both ip and port: go run main.go -ip=10.0.0.42 -port=9000
+	flag.Parse()
 
 	addr := ip + ":" + port
 
