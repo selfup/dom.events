@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  'Micro: Neat command line tool called entr'
+title: "Micro: Neat command line tool called entr"
 ---
 
 # Neat tool called entr
 
-*TIL* about a command line util called `entr` :tada:
+_TIL_ about a command line util called `entr` :tada:
 
 Website: [entrproject](http://eradman.com/entrproject/)
 

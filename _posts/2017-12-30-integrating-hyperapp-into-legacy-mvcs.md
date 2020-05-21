@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Integrating Hyperapp Into Legacy MVCs"
-date:   2017-12-30 14:43:44 -0600
+title: "Integrating Hyperapp Into Legacy MVCs"
+date: 2017-12-30 14:43:44 -0600
 categories: domevents
 ---
 
@@ -31,19 +31,16 @@ using `EJS` with Node/Express, etc.._
 # Header/Navbar partial
 
 <div id="navbar_root">
-<%= javascript_pack_tag 'navbar' %>
+  <%= javascript_pack_tag 'navbar' %> # Profile page partial
 
+  <div id="profile_page_root">
+    <%= javascript_pack_tag 'profilePage' %> # Footer partial
 
-# Profile page partial
-
-<div id="profile_page_root">
-<%= javascript_pack_tag 'profilePage' %>
-
-
-# Footer partial
-
-<div id="footer_root">
-<%= javascript_pack_tag 'footer' %>
+    <div id="footer_root">
+      <%= javascript_pack_tag 'footer' %>
+    </div>
+  </div>
+</div>
 ```
 
 Each partial (_traditional server side template component_) will have it's own
@@ -56,23 +53,16 @@ solution to using webpack) makes when writing a bundle.
 Structure looks like so:
 
 ```javascript
-javascript/
-  appActions/
-  appState/
-  models/
-  appComponents/
-    SomeView.js
-    AnotherView.js
-  utils/
-    sharedInternalUtils.js
-  packs/
-    profilePage.js
-    navbar.js
-    footer.js
-  stuff.js
-  thing.js
-  otherThing.js
-  otherStuff.js
+javascript / appActions / appState / models / appComponents / SomeView.js;
+AnotherView.js;
+utils / sharedInternalUtils.js;
+packs / profilePage.js;
+navbar.js;
+footer.js;
+stuff.js;
+thing.js;
+otherThing.js;
+otherStuff.js;
 ```
 
 Components can be shared while having individual packs!
@@ -115,25 +105,21 @@ Now you need to grab the data (in your pack tag prior to calling your comp/view)
 ```javascript
 // profilePage.js
 
-import { app } from 'hyperapp';
-import { state, actions } from './../models/ProfilePageModel';
-import ProfilePageComp from './../components/ProfilePageComp';
+import { app } from "hyperapp";
+import { state, actions } from "./../models/ProfilePageModel";
+import ProfilePageComp from "./../components/ProfilePageComp";
 
-const { innerHTML } = document.getElementById('profile_page_data');
+const { innerHTML } = document.getElementById("profile_page_data");
 const data = JSON.parse(dataNode.innerHTML);
 
 // now that you have some backend data, merge it with your app state
 const appState = Object.assign({}, state, data);
 
-const {
-  someAction,
-  anotherAction,
-  makeApiCall,
-} = app(
+const { someAction, anotherAction, makeApiCall } = app(
   state,
   actions,
   ProfilePageComp,
-  document.getElementById('profile_page_root'),
+  document.getElementById("profile_page_root")
 );
 
 // make the intial api call to populate the DOM with user specific profile data
@@ -158,9 +144,9 @@ const {
   but because designers are hard at work redesigning the section just below all
   the cogs and wigdgets built in Hyperapp, that the save button is still part of
   the jQuery part of the page, now you can just change the function it calls!
-*/ 
+*/
 $('#saveProfile').on('click', someActionThatSavesTheProfile);
-``` 
+```
 
 Hyperapps can talk to eachother this way too. [Here is an example I wrote on
 Codepen](https://codepen.io/selfup/pen/jLMRjO) of plain old JS talking to HA.

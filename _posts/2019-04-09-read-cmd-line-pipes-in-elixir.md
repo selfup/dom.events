@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Micro: Read cmd line pipes in elixir'
+title: "Micro: Read cmd line pipes in elixir"
 ---
 
 # Read cmd line pipes in elixir

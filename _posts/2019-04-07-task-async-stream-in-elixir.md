@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  'Micro: Task async stream in elixir'
+title: "Micro: Task async stream in elixir"
 ---
 
 # Task async stream in elixir
