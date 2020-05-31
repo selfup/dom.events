@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Optimization and Performance: Memoizing in JavaScript!"
-date:   2017-07-23 22:43:44 -0600
+title: "Optimization and Performance: Memoizing in JavaScript!"
+date: 2017-07-23 22:43:44 -0600
 categories: domevents
 ---
 
@@ -20,7 +20,7 @@ Here is an example of a basic `fib` function:
 ```javascript
 function fib(number) {
   if (number < 2) return number;
-  return (fib(number - 1) + fib(number - 2));
+  return fib(number - 1) + fib(number - 2);
 }
 ```
 
@@ -82,7 +82,7 @@ const fib = (num, cache = {}) => {
 
   // return the result so recursion can continue
   return cache[num];
-}
+};
 ```
 
 Now this function can take **42**, **500**, **900**, **1000**, and so on!

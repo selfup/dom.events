@@ -4,4 +4,14 @@ title: About
 permalink: /about/
 ---
 
-Here is my website if you want to learn more about me: [selfup](https://selfup.me)
+I code. I art. I music. I am.
+
+Fascinated with concurrent/parallel programming.
+
+Locks, Eventual Consistency, Snapshots, etc..
+
+OOP of FP, whatever fits the bill for the job.
+
+Recently getting into game development. What a wonderfully different world than the web.
+
+Here is my website if you want to find more social links about me: [selfup](https://selfup.me)

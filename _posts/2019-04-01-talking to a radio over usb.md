@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  'Talking to a radio over usb with Powershell'
+title: "Talking to a radio over usb with Powershell"
 ---
 
 # Talking to a radio over usb with Powershell
@@ -61,7 +61,7 @@ Start-Sleep -m 100
 $port.Close()
 ```
 
-Once I was able to confirm the payload I was sending was correct, I would email the script to my dad and he would try it out. 
+Once I was able to confirm the payload I was sending was correct, I would email the script to my dad and he would try it out.
 
 It worked! He was now able to double click the file on his desktop and get it to work!
 

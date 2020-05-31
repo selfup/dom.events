@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Modern JavaScript Interview Prep!"
-date:   2017-07-23 20:43:44 -0600
+title: "Modern JavaScript Interview Prep!"
+date: 2017-07-23 20:43:44 -0600
 categories: domevents
 ---
 
@@ -23,7 +23,7 @@ What is the difference between `forEach` and `map` in JS?
 ```javascript
 const arr = [1, 2, 3];
 
-const eachExample = () => arr.forEach(e => e);
+const eachExample = () => arr.forEach((e) => e);
 
 console.log(eachExample());
 ```
@@ -35,7 +35,7 @@ What will the `console.log` print? Guess without running the code.
 ```javascript
 const arr = [1, 2, 3];
 
-const mapExample = () => arr.map(e => e);
+const mapExample = () => arr.map((e) => e);
 
 console.log(mapExample());
 ```
@@ -45,7 +45,10 @@ console.log(mapExample());
 ```javascript
 const arr = [1, 2, 3];
 
-const mapExample = () => arr.map(e => { e });
+const mapExample = () =>
+  arr.map((e) => {
+    e;
+  });
 
 console.log(mapExample());
 ```
@@ -56,7 +59,7 @@ What will the `console.log` print in the basic map example? In the bonus map exa
 
 How does JS deal with references?
 
-Examples to refresh your mind. *Do not run the code*.
+Examples to refresh your mind. _Do not run the code_.
 
 ```javascript
 const a = [1, 2, 3];
@@ -73,7 +76,7 @@ What will the `zeroth` element in `a` look like? Guess without running the code.
 ```javascript
 const a = [1, 2, 3];
 
-const b = a.map(e => e);
+const b = a.map((e) => e);
 
 const c = a.slice(0);
 
@@ -100,19 +103,17 @@ When would you delegate?
 </ul>
 ```
 
-With one event listener, how can I `console.log` the text from *a specific* list item?
+With one event listener, how can I `console.log` the text from _a specific_ list item?
 
 **No `jQuery`. No `this`.**
 
 Template for JS answer:
 
 ```javascript
-document
-  .querySelector('#list')
-  .addEventListener(/* your code goes here */);
+document.querySelector("#list").addEventListener(/* your code goes here */);
 ```
 
-You should not need curly braces to `console.log` the text of *a* list item.
+You should not need curly braces to `console.log` the text of _a_ list item.
 
 ## Variables
 
@@ -123,7 +124,7 @@ You should not need curly braces to `console.log` the text of *a* list item.
 ## Functions
 
 ```javascript
-const wow = () => 'wow';
+const wow = () => "wow";
 
 console.log(wow());
 ```
@@ -133,9 +134,9 @@ How would you write this is `ES5`?
 ## Asynchronous Resolutions
 
 ```js
-Promise.resolve().then(() => console.log('one'));
-(async () => console.log('two'))();
-setTimeout(() => console.log('three'), 0);
+Promise.resolve().then(() => console.log("one"));
+(async () => console.log("two"))();
+setTimeout(() => console.log("three"), 0);
 ```
 
 In what order will the three statements above print to the console?
@@ -145,7 +146,7 @@ In what order will the three statements above print to the console?
 ## Default Parameters
 
 ```js
-function test({hello='world'}) {
+function test({ hello = "world" }) {
   console.log(hello);
 }
 test();
@@ -154,10 +155,10 @@ test();
 What will `test()` print to the console? (Careful, pay attention to the way this example is written)
 
 ```js
-function test(obj={hello:'world'}) {
+function test(obj = { hello: "world" }) {
   console.log(obj.hello);
 }
-test({foo: 'bar'});
+test({ foo: "bar" });
 ```
 
 What about now? What will `test({foo: 'bar'});` print to the console?
@@ -167,8 +168,8 @@ What about now? What will `test({foo: 'bar'});` print to the console?
 ```javascript
 const addOne = () => {
   let num = 0;
-  return () => num += 1;
-}
+  return () => (num += 1);
+};
 ```
 
 What happens if I do:
@@ -184,7 +185,7 @@ a();
 ## Currying
 
 ```javascript
-const addNums = num1 => num2 => num3 => num1 + num2 + num3;
+const addNums = (num1) => (num2) => (num3) => num1 + num2 + num3;
 ```
 
 What happens if I do:
@@ -203,8 +204,8 @@ addNums(3)(4)(5);
 
 ```javascript
 const obj = {
-  ok: 'wow ok',
-  wow: 'wow wow',
+  ok: "wow ok",
+  wow: "wow wow",
 };
 
 const { ok } = obj;
@@ -219,9 +220,9 @@ What will the `console.log` print?
 ```javascript
 class Wow {
   constructor() {
-    this.wow = 'wow';
+    this.wow = "wow";
   }
-};
+}
 
 class Ok extends Wow {
   constructor() {
@@ -231,7 +232,7 @@ class Ok extends Wow {
   printWow() {
     console.log(this.wow);
   }
-};
+}
 
 const ok = new Ok();
 ok.printWow();
@@ -250,19 +251,19 @@ What will `ok.printWow()` do?
 ```
 
 ```javascript
-const printDomStuff = new class {
+const printDomStuff = new (class {
   constructor() {
-    this.entry = document.querySelector('#entry');
-    this.fromClass = 'from class';
+    this.entry = document.querySelector("#entry");
+    this.fromClass = "from class";
   }
 
   printWowOnClick() {
-    this.entry.addEventListener('click', function(e) {
+    this.entry.addEventListener("click", function (e) {
       console.log(this.fromClass);
       console.log(e.target.innerText);
     });
   }
-};
+})();
 
 printDomStuff.printWowOnClick();
 ```
@@ -272,30 +273,33 @@ How do we make `console.log(this.fromClass)` work?
 What will `console.log(this)` print inside of the `'click'` callback?
 
 ## Passing by Reference
-```javascript
-const reassignWow = wow => {
-  wow = { ok: 'neat' };
-}
 
-let x = { ok: 'cool!' };
+```javascript
+const reassignWow = (wow) => {
+  wow = { ok: "neat" };
+};
+
+let x = { ok: "cool!" };
 
 reassignWow(x);
 
 console.log(x.ok);
 ```
+
 What will `console.log(x.ok)` print?
 
 ```javascript
-const doStuffToWow = wow => {
-  wow.ok = 'cool!';
-}
+const doStuffToWow = (wow) => {
+  wow.ok = "cool!";
+};
 
-let x = { ok: 'neat' };
+let x = { ok: "neat" };
 
 doStuffToWow(x);
 
 console.log(x.ok);
 ```
+
 What will `console.log(x.ok)` print?
 
 ## Hoisting
@@ -303,8 +307,8 @@ What will `console.log(x.ok)` print?
 ```javascript
 const printWow = () => {
   console.log(x);
-  let x = 'wow';
-}
+  let x = "wow";
+};
 ```
 
 What will `console.log(x)` print?
@@ -314,20 +318,20 @@ What will `console.log(x)` print?
 ```javascript
 class Demo {
   constructor() {
-    this.ok = 'ok';
+    this.ok = "ok";
   }
 
   printStuff(stuff) {
     console.log(this.ok + stuff);
   }
-};
+}
 
 const d = new Demo();
 
 const ok = function printOk() {
-  this.ok = 'weird stuff';
+  this.ok = "weird stuff";
   d.printStuff.call(this, " wasn't that cool");
-}
+};
 
 ok();
 ```

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Micro: Using Reduce for Synchronizing Async Calls'
+title: "Micro: Using Reduce for Synchronizing Async Calls"
 ---
 
 # Using Reduce for Synchronizing Async Calls
@@ -16,22 +16,23 @@ In this example we will be writting text to an empty HTML element.
 ```
 
 ```js
-const myText = document.querySelector('.my-text');
+const myText = document.querySelector(".my-text");
 
-const writeChars = (myText, char) => new Promise((resolve, reject) => {
-  return setTimeout(() => {
-    myText.innerText += char;
-    resolve();
-  }, 25);
-});
+const writeChars = (myText, char) =>
+  new Promise((resolve, reject) => {
+    return setTimeout(() => {
+      myText.innerText += char;
+      resolve();
+    }, 25);
+  });
 
 function type(sentence) {
-  sentence.split('').reduce((promiseResolver, char) => {
+  sentence.split("").reduce((promiseResolver, char) => {
     return promiseResolver.then(() => writeChars(myText, char));
   }, Promise.resolve());
 }
 
-type('This is a sentence');
+type("This is a sentence");
 ```
 
 1. First we grab the `h1`

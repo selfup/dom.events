@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Micro: Lazy Redux Reducer'
+title: "Micro: Lazy Redux Reducer"
 ---
 
 # Lazy Redux Reducer

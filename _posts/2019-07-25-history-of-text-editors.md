@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'History of text editors'
+title: "History of text editors"
 published: false
 ---
 

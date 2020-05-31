@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Golang concurrent TCP server'
+title: "Golang concurrent TCP server"
 ---
 
 # Golang concurrent TCP server

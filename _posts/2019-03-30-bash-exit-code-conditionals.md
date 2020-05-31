@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  'Micro: exit code conditionals in Bash'
+title: "Micro: exit code conditionals in Bash"
 ---
 
 # Exit code conditionals
 
-*TIL* about `$?` :thinking:
+_TIL_ about `$?` :thinking:
 
 Just as confusing as it looks, but it makes a good bit of sense once you learn it.
 
