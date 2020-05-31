@@ -74,7 +74,7 @@ Hope this post made switching over a bit easier. I use two really helpful aliase
 
 ```zsh
 alias zrc="code $HOME/.zshrc"
-alias zgo="source $HOME/.zprofile && source $HOME/.zshrc"
+alias zgo="source $HOME/.zshrc"
 ```
 
 This way I can open, edit, and make available any change I am working on in my rc file.
