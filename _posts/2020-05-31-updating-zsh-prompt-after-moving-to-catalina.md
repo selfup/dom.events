@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Micro: Updating Zsh Prompt After Moving To Catalina'
-published: false
+published: true
 ---
 
 # Updating Zsh Prompt After Moving To Catalina
