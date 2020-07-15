@@ -1,0 +1,81 @@
+==================================================================
+https://keybase.io/selfup
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://dom.events
+  * I am selfup (https://keybase.io/selfup) on keybase.
+  * I have a public key with fingerprint F6BD CA79 8ED7 CF49 B9FF  CAA8 2977 288B EE59 5B60
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101eb1fc27ec71cd4b4810d93b1976fe3e31b32f7a776170af94fe0dbd54b6e005a0a",
+      "fingerprint": "f6bdca798ed7cf49b9ffcaa82977288bee595b60",
+      "host": "keybase.io",
+      "key_id": "2977288bee595b60",
+      "kid": "0101eb1fc27ec71cd4b4810d93b1976fe3e31b32f7a776170af94fe0dbd54b6e005a0a",
+      "uid": "2aeb853b6df108eca8f9c602e573bd19",
+      "username": "selfup"
+    },
+    "merkle_root": {
+      "ctime": 1592360243,
+      "hash_meta": "047dc41f618d5eeb9ef10f1a4bd3a3b04b2def0b07a821d6836808a4e0ff67d2",
+      "seqno": 16689348
+    },
+    "revoke": {
+      "sig_ids": [
+        "9d686970de35ba7108eaeeb21ab953bcaf839a3e976b17c99663dd30065fc1810f"
+      ]
+    },
+    "service": {
+      "hostname": "dom.events",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1592360243,
+  "expire_in": 157680000,
+  "prev": "c51640713e4460da7cb8f0b56001b39791c690b7889fd60345664dd526b1aa5f",
+  "seqno": 16,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMKwAnicrVNdaBxFHL9oL9FAsCAY8aHIIjTF2s7szM7sXEsRI5JYqVYQqZoeMzv/
+uVsuuT13964Xzli1NdHgk6QqqVYfCv1CW3v4omJDTR/UhkqjSFGCikgC9aP6ILWV
+Ohsr+NBH92XZ4ff7/z7+O7M91+e6O5K78h/10Xe+6PjsZFLPbV8aIy1HRXrUKbSc
+Ciy/YFhDkhYroXYKDsIIg8ImcDkEHAeaKupjpAVRWHBmgADBiriGS84Z5kgaQQ0g
+rbRHFQOEPImks9YxYbUEcS0Oq6kda5jSgeTCB80DQ4USxgRS+q7g3PV9BeAJTzFk
+ieUoyRjWnJIJrAsje2Y/isv2roH/n33X/9GRoHyPKKYNRj4E0jciYMgFjxOlsciA
+CcRVOQIWncCwqdecsbXOCMSVYSjGUZRm1QZpmAGwJ1xi2ZTYeDIpF0cglZlpynVA
+sWHY1x6AEmDVDJZUaSKJQlS5GgxSiNumsGY+YT7yJQVkDOPatS4SeLIaWQXGfEGo
+by3E0IgqkKknYcm2ljiFxx1hyUxwpIF4SvIsk7SCLpZK2JiBND4RkoCtSmEeCMEY
+0ZogxDwTYFukcYbGMrW4EQbLw7M1XY2vo5F10IBqmlhDtThKoyAatuflNK0lhayW
+dLSWAXeAKl4dUVRhVdtfxDIaECdhVLUhLPIajUGzFsZQDDOEx20D9sl0oGFHBh5m
+FHFMgFKGtOSB8m1jHkPIrltwgQMmkOK+L4xmiFCPMaq159qcUnrmvxVan7KUrTMs
+VWVaj8EZOznzxIpcR3euM39ddndy3Teu/PdGfX3qhlz7wfd27TSbDh0/4a1qbt26
+sLexuLh6zR9T3xwrhj+11zwM7/4ynuw+f3pLr9o/P9B7+f373zydG5z+nrYu33tp
+80S98euVuRfVx498svTB6sHnd//QdeC2Ffs33xy2S29NbDx4dmn9THRWfHdnn7ex
+ee7KA9/2L/52jqQDcw9dzL96zwXR9fsdZxZf2YY7pwZOfXjkhaHH2Oz8ykpXc77/
+mS16+pbug49euNTV2vP5sy/furP858LCpBoabZ/Y8HRhX8e2ycNfjZMz6Lm3f97X
+Hlw63DlVah3dtefTDTte6qO962f7L/b8+Hp578wb0/kvw/PNAxMT9/WOM+e1vw7d
+NPfUZH57/fimVbf33P036zqC2g==
+=Keye
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/selfup
+
+==================================================================
