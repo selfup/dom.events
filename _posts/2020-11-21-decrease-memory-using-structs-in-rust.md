@@ -177,7 +177,7 @@ pub enum ProtonData {
 }
 ```
 
-Something similar was done with quarks, and an enum called `QuarkData` was made. This makes processing an `Proton` quite simple mathing a 3 element tuple:
+Something similar was done with quarks, and an enum called `QuarkData` was made. This makes processing an `Proton` quite simple matching a 3 element tuple:
 
 ```rust
 impl ProtonData {
