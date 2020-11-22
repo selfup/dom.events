@@ -13,7 +13,7 @@ first steps?
 
 ### MVCs
 
-If your app is build with something like Rails/Django/Phoenix/Laravel it would
+If your app is built with something like Rails/Django/Phoenix/Laravel it would
 make sense to keep the routing on backend since it does that job really well.
 
 _But how will I make an SPA?_
@@ -43,7 +43,7 @@ using `EJS` with Node/Express, etc.._
 </div>
 ```
 
-Each partial (_traditional server side template component_) will have it's own
+Each partial (_traditional server side template component_) will have its own
 Hyperapp that calls in a seperate bundle. Each bundle can use shared components
 (views) but the bundles themselves will be unique, as each partial is unique.
 
@@ -156,6 +156,6 @@ make a call to an exposed NavBar actions that will update the cart number for ex
 Hyperapps can talk to jQuery the old fashioned way, but I would try my best to
 never mix jQuery inside the VDOM!
 
-### Conclusion Part 1
+### Conclusion
 
 The big advantage here is that because we can sprinkle in little apps one by one, eventually all of the components can get merged once a certain route is finished being completely converted, and then you can start utilizing a frontend router and just keep the backend as an Auth mecahnism and an API.
