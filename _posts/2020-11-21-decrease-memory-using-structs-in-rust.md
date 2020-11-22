@@ -49,6 +49,7 @@ Decreasing the memory profile by utilizing enums and additional processing impro
 Here is a basic Enum in Rust:
 
 ```rust
+#[derive(Debug, Copy, Clone)]
 pub enum Apple {
     Green,
     Red,
@@ -67,6 +68,7 @@ That `Apple` enum is 1 byte. You can add say 20 other imaginary things to the `A
 Something like so:
 
 ```rust
+#[derive(Debug, Copy, Clone)]
 pub enum Apple {
     GreenAndFresh,
     GreenAndNotFresh,
@@ -84,6 +86,7 @@ This is really fun for matching, especially with tuples!
 Let's do something similar with a carrot:
 
 ```rust
+#[derive(Debug, Copy, Clone)]
 pub enum Carrot {
     OrangeAndFresh,
     OrangeAndNotFresh,
@@ -114,9 +117,10 @@ Cool, let's go over why that saved us a ton of space.
 A more traditional yet maintainable approach you would do something like:
 
 ```rust
+#[derive(Debug, Copy, Clone)]
 pub struct Apple {
-    color: Color,
-    freshness: Freshness,
+    pub color: Color,
+    pub freshness: Freshness,
 }
 ```
 
@@ -125,15 +129,17 @@ Where Color/Freshness is an Enum similar to `Color::Red`/`Freshness::Fresh`.
 A quick and easy struct while having less inferance from your editor would be:
 
 ```rust
+#[derive(Debug, Copy, Clone)]
 pub struct Apple {
-    color: String,
-    freshness: String,
+    pub color: String,
+    pub freshness: String,
 }
 ```
 
 An optimized version of that:
 
 ```rust
+#[derive(Debug, Copy, Clone)]
 pub struct Apple {
     color: u8,
     freshness: u8,
