@@ -190,7 +190,7 @@ impl ProtonData {
                 ProtonData::RedUpUpDownQuark,
             
             (QuarkData::AlphaUpQuark, QuarkData::AlphaUpQuark, QuarkData::AlphaDownQuark) =>
-                ProtonData::RedUpUpDownQuark,
+                ProtonData::AlphaUpUpDownQuark,
             
             _ => ProtonData::Unknown,
         }
