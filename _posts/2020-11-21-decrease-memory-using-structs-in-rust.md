@@ -144,7 +144,7 @@ Here a `u8` is a cheap memory saving trick while still having to map things out 
 
 Whereas with an enum you just know because it tells you.
 
-With the enum we now have half the footprint as using the u8s.
+With the enum we now have half the footprint as using the `u8`s.
 
 Since we have to store 2 `u8`s in the low memory struct version, that's two bytes.
 
