@@ -155,7 +155,7 @@ Pretty cool!
 
 [This PR in Oxidizy](https://github.com/selfup/oxidizy/pull/12) introduces a work in progress of this refactor.
 
-Essentially additional enums were made to create a representation of a created `Proton`/`Neutron`. So we still create the original elements on the fly to have all the correct business logic in place, then we infer from the created object the representation of that data that we will store in RAM. The created object that is not stored now dissapears, reducing the memory footprint. `Protons` is a two field struct with a count and a default array of 118 P`ProtonData::Unknown`s.
+Essentially additional enums were made to create a representation of a created `Proton`/`Neutron`. So we still create the original elements on the fly to have all the correct business logic in place, then we infer from the created object the representation of that data that we will store in RAM. The created object that is not stored now dissapears, reducing the memory footprint. `Protons` is a two field struct with a count and a default array of 118 `ProtonData::Unknown`s.
 
 What is `ProtonData`? That was the made up abstraction to the `Proton` objects themselves:
 
