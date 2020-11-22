@@ -64,7 +64,7 @@ You can now just store imaginary words that your editor can infer and that you c
 
 That `Apple` enum is 1 byte. You can add say 20 other imaginary things to the `Apple` and it will still be 1 byte.
 
-So say something like so:
+Something like so:
 
 ```rust
 pub enum Apple {
@@ -77,7 +77,7 @@ pub enum Apple {
 }
 ```
 
-Now can inspect a _single_ `Apple` enum and have it be possibly 3 different colors as well as 3 different states of freshness, but it will always be one of the 6.
+Now you can inspect a _single_ `Apple` enum and have it be possibly 3 different colors as well as 3 different states of freshness, but it will always be one of the 6.
 
 This is really fun for matching, especially with tuples!
 
@@ -94,7 +94,7 @@ pub enum Carrot {
 }
 ```
 
-So now you can have a basket of Apples and Carrots of different states.
+Now you can have a basket of Apples and Carrots of different states.
 
 Say you are executing a function called `inspect_an_apple_and_a_carrot`:
 
@@ -120,9 +120,9 @@ pub struct Apple {
 }
 ```
 
-Where Color/Freshness is an Enum so like `Color::Red`/`Freshness::Fresh`.
+Where Color/Freshness is an Enum similar to `Color::Red`/`Freshness::Fresh`.
 
-A quick and easy while having less inferance from your editor approach would be:
+A quick and easy struct while having less inferance from your editor would be:
 
 ```rust
 pub struct Apple {
@@ -139,13 +139,14 @@ pub struct Apple {
     freshness: u8,
 }
 ```
-Here u8 is a cheap memory saving trick while still having to map things out and not have as much intellisense. While the editor will know it's a u8 you'll have to memorize what 0, 6, 11, or 24 means.
+
+Here a `u8` is a cheap memory saving trick while still having to map things out and not have as much intellisense. While the editor will know it's a `u8` you'll have to memorize what 0, 6, 11, or 24 means.
 
 Whereas with an enum you just know because it tells you.
 
 With the enum we now have half the footprint as using the u8s.
 
-Since we have to store 2 u8s in the low memory struct version, that's two bytes.
+Since we have to store 2 `u8`s in the low memory struct version, that's two bytes.
 
 With the enum we can store all 6 potential different states as 1 byte.
 
