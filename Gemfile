@@ -1,10 +1,9 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.8.4"
-
+gem "jekyll", "~> 3.9.0"
 gem "minima", "~> 2.5"
-
 gem "activesupport", ">= 4.1.11"
+gem "kramdown-parser-gfm", ">= 1.0.0"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
