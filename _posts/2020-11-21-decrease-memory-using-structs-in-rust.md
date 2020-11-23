@@ -40,7 +40,7 @@ That's a lot of Quarks! 33 billion..
 
 Before the quark optimization ([in this PR](https://github.com/selfup/oxidizy/pull/12)) we capped out at 5.6 billion.
 
-We reduced the memory footprint 6.6 times. This runs at/around the same speed. Which is an added bonus since it increases the load on all threads now that we are increasing processing on the CPU (all logical cores). The CPU bump is more unique to our application and not a consequence of using enums. We just chose to keep the original structures to infer the enum type. More tedious but it will help when we introduce algebra.
+We reduced the memory footprint 6.6 times. This runs at/around the same speed as the prior 5.6 billion Quark runs. Which is an added bonus since it increases the load on all threads now that we are increasing processing on the CPU (all logical cores). The CPU bump is more unique to our application and not a consequence of using enums. We just chose to keep the original structures to infer the enum type. More tedious but it will help when we introduce algebra.
 
 Decreasing the memory profile by utilizing enums and additional processing improved the performance 4 times over. That's a rare outcome for sure.
 
