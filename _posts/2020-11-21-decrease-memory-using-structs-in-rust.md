@@ -83,7 +83,19 @@ Now you can inspect a _single_ `Apple` enum and have it be possibly 3 different 
 
 This is really fun for matching, especially with tuples!
 
-Let's do something similar with a carrot:
+***
+_Important side note:_
+
+_If you go beyond the C style enum and start storing more complex variants your enum size will vary._
+
+_Here is a great rundown on Stack Overflow: [Enum Size Rundown](https://stackoverflow.com/a/45463142)_
+
+_A very useful function when optimizing: [std::mem::size_of](https://doc.rust-lang.org/std/mem/fn.size_of.html)_
+
+***
+<em></em>
+
+Let's do something similar with a `Carrot`:
 
 ```rust
 #[derive(Debug, Copy, Clone)]
@@ -97,7 +109,7 @@ pub enum Carrot {
 }
 ```
 
-Now you can have a basket of Apples and Carrots of different states.
+Now you can have a basket of `Apple`s and `Carrot`s of different states.
 
 Say you are executing a function called `inspect_an_apple_and_a_carrot`:
 
@@ -177,7 +189,7 @@ pub enum ProtonData {
 }
 ```
 
-Something similar was done with quarks, and an enum called `QuarkData` was made. This makes processing an `Proton` quite simple matching a 3 element tuple:
+Something similar was done with quarks, and an enum called `QuarkData` was made. This makes processing a `Proton` quite simple matching a 3 element tuple:
 
 ```rust
 impl ProtonData {
@@ -226,4 +238,4 @@ pub enum QuarkData {
 
 So there you have it.
 
-Increase CPU a bit, decrease mem allocations by a significant amount, and a faster program emerges!
+Increase CPU a bit, decrease mem allocations by a significant amount by utilizing C style enums, and a faster program emerges!
