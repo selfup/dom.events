@@ -12,7 +12,7 @@ I started this project many years ago but now that [Bevy](https://github.com/bev
 
 The first thing was to tackle multithreaded mutations and then once that was at a reasonable state we moved on to adding more layers to the generator.
 
-Now we are at the point where memory is starting to become an unfortunate contstraint even on a 32GB machine.
+Now we are at the point where memory is starting to become an unfortunate contstraint even on a machine with 32GB of RAM (DDR4 3200MHz C16).
 
 The program ([unigen](https://github.com/selfup/oxidizy/tree/master/crates/unigen), not the simulator) at max workload with my hardware outputs the following:
 
