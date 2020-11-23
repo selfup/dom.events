@@ -206,7 +206,7 @@ impl ProtonData {
                 ProtonData::BlueUpUpDownQuark,
             
             (QuarkData::GreenUpQuark, QuarkData::GreenUpQuark, QuarkData::GreenDownQuark) =>
-                ProtonData::RedUpUpDownQuark,
+                ProtonData::GreenUpUpDownQuark,
             
             (QuarkData::AlphaUpQuark, QuarkData::AlphaUpQuark, QuarkData::AlphaDownQuark) =>
                 ProtonData::AlphaUpUpDownQuark,
