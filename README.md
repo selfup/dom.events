@@ -16,7 +16,7 @@ Run jekyll server:
 
 `bundle exec jekyll serve`
 
-Write new blog post:
+Generate new blog post template:
 
 `go run main.go -title='post-title'`
 
