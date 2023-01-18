@@ -1,9 +1,8 @@
 title: DOM Events
 description: >
-  Technical Things and Stuff!
+  Tech Blog
 base_url: ""
 url: "https://dom.events"
-twitter_username: rboudinot
 github_username:  selfup
 linkedin_username: regisboudinot
 
@@ -22,4 +21,3 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - main.go
-  
