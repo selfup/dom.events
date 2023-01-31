@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 3.9.0"
-gem "minima", "~> 2.5.1"
+gem "minima", git: "https://github.com/jekyll/minima"
 gem "activesupport", ">= 4.1.11"
 gem "kramdown-parser-gfm", ">= 1.0.0"
 
