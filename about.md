@@ -6,12 +6,8 @@ permalink: /about/
 
 I code. I art. I music. I am.
 
-Fascinated with concurrent/parallel programming.
+Fascinated with concurrent/parallel programming. Containers are fun too!
 
-Locks, Eventual Consistency, Snapshots, etc..
-
-OOP of FP, whatever fits the bill for the job.
-
-Recently getting into game development. What a wonderfully different world than the web.
+Manager - Security Innovation Engineering at Allstate.
 
 Here is my website if you want to find more social links about me: [selfup](https://selfup.me)
