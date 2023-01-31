@@ -12,6 +12,9 @@ plugins:
   - jekyll-feed
   - jemoji
 
+minima:
+  skin: dark
+
 exclude:
   - Gemfile
   - Gemfile.lock
