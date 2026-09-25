@@ -2,24 +2,30 @@
 
 # dom.events
 
-Blog for [dom.events](https://dom.events)!
+Blog for [dom.events](https://dom.events)
 
 ### Development
 
-If running an old version of bundler:
+All you need is [podman](https://podman.io) or [docker](https://www.docker.com). Ruby and Jekyll run inside the container. The scripts use podman when it's installed, otherwise docker. Set `CONTAINER_ENGINE=docker` to force docker.
 
-`gem install bundler`
+Build the image (rerun after changing the `Gemfile`):
 
-Bundle once all good:
+`scripts/build-image.sh`
 
-`bundle install`
+---
 
-Run jekyll server:
+Run the Jekyll server at http://localhost:4000. It rebuilds when you save a file, then refresh the browser to see the change:
 
-`bundle exec jekyll serve`
+`scripts/dev.sh`
 
-Generate new blog post template:
+---
 
-`go run main.go -title='post-title'`
+Build the site into `_site`:
 
-If you want to see optional flags just run `go run main.go -h`
+`scripts/build-site.sh`
+
+---
+
+Serve the site as baked into the image (rebuild the image to pick up changes):
+
+`scripts/serve.sh`

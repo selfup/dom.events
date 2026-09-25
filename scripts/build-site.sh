@@ -4,4 +4,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-podman run --rm -v "$PWD:/srv/jekyll" dom-events bundle exec jekyll build "$@"
+# Use podman if it's installed, otherwise docker.
+# Force one with CONTAINER_ENGINE=docker (or podman).
+ENGINE="${CONTAINER_ENGINE:-$(command -v podman >/dev/null 2>&1 && echo podman || echo docker)}"
+
+"$ENGINE" run --rm -v "$PWD:/srv/jekyll" dom-events bundle exec jekyll build "$@"

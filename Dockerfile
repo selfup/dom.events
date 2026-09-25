@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 #
 # Wrapper scripts live in scripts/:
-#   build-image.sh   podman build -t dom-events .
+#   build-image.sh   build the dom-events image with podman or docker
 #   serve.sh         serve the baked-in site on http://localhost:4000
 #   dev.sh           serve the working tree with live regeneration
 #   build-site.sh    generate ./_site from the working tree
