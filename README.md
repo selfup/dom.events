@@ -6,26 +6,34 @@ Blog for [dom.events](https://dom.events)
 
 ### Development
 
-All you need is [podman](https://podman.io) or [docker](https://www.docker.com). Ruby and Jekyll run inside the container. The scripts use podman when it's installed, otherwise docker. Set `CONTAINER_ENGINE=docker` to force docker.
+All you need is [podman](https://podman.io) or [docker](https://www.docker.com).
 
-Build the image (rerun after changing the `Gemfile`):
+Ruby and Jekyll run inside the container.
+
+The scripts use podman when it's installed, otherwise docker. Set `CONTAINER_ENGINE=docker` to force docker.
+
+### Scripts
 
 `scripts/build-image.sh`
 
----
+Builds the image (rerun after changing the `Gemfile`)
 
-Run the Jekyll server at http://localhost:4000. It rebuilds when you save a file, then refresh the browser to see the change:
+---
 
 `scripts/dev.sh`
 
----
+Runs the Jekyll server at http://localhost:4000
 
-Build the site into `_site`:
+It rebuilds when you save a file, then refresh the browser to see the changes
+
+---
 
 `scripts/build-site.sh`
 
+Builds the site into `_site`
+
 ---
 
-Serve the site as baked into the image (rebuild the image to pick up changes):
-
 `scripts/serve.sh`
+
+Serves the site as baked into the image (rebuild the image to pick up changes)
