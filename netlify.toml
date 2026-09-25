@@ -1,0 +1,5 @@
+# Netlify installs the gems into a private bundle path, so their commands are
+# not on PATH. Run Jekyll through Bundler so it is found.
+[build]
+  command = "bundle exec jekyll build"
+  publish = "_site"

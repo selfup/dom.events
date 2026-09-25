@@ -15,6 +15,7 @@ plugins:
 exclude:
   - .github
   - Dockerfile
+  - netlify.toml
   - scripts
   - Gemfile
   - Gemfile.lock

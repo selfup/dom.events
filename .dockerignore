@@ -4,6 +4,7 @@
 .editorconfig
 .dockerignore
 Dockerfile
+netlify.toml
 scripts
 _site
 .sass-cache
