@@ -1,0 +1,39 @@
+---
+---
+
+@import "minima";
+@import "rouge-dark";
+
+@media (prefers-color-scheme: dark) {
+  html { color-scheme: dark; }
+
+  body { color: #ddd; background-color: #181a1b; }
+
+  a, a:visited { color: #6ea8fe; }
+
+  .site-title, .site-title:visited,
+  .page-link, .page-link:visited { color: #ddd; }
+
+  .site-header { border-top-color: #444; border-bottom-color: #333; }
+  .site-footer { border-top-color: #333; }
+
+  .post-meta, .footer-col-wrapper, blockquote { color: #999; }
+  blockquote { border-left-color: #444; }
+
+  pre, code, .highlight, .highlighter-rouge .highlight {
+    background-color: #161b22;
+    border-color: #333;
+  }
+
+  table th { background-color: #161b22; }
+  table tr:nth-child(even) { background-color: #1e2022; }
+  table th, table td { border-color: #333; }
+
+  .svg-icon { fill: #999; }
+
+  // phone-width dropdown menu
+  .site-nav { background-color: #181a1b; border-color: #333; }
+  .site-nav .menu-icon > svg path { fill: #999; }
+
+  @include rouge-dark;
+}
