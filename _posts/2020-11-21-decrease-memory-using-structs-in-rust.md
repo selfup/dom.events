@@ -4,17 +4,13 @@ title: 'Decrease Memory Using Enums in Rust'
 published: true
 ---
 
-# Decrease Memory Using Enums in Rust
+I'm slowly building an atom/universe generator and visualizer in Rust with some friends. The project is called [Oxidizy](https://github.com/selfup/oxidizy).
 
-I am slowly building a sort of atom/universe generator/visualizer in Rust with friends. The project is called [Oxidizy](https://github.com/selfup/oxidizy).
+I started it many years ago. Now that [Bevy](https://github.com/bevyengine/bevy) exists, a game engine that makes ECS (Entity Component System) a breeze, I decided to go back and optimize the universe generator.
 
-I started this project many years ago but now that [Bevy](https://github.com/bevyengine/bevy) is an available game engine that makes ECS a breeze I decided to go back and optimize the universe generator.
+The first job was multithreaded mutations. Once those were in a reasonable state, we moved on to adding more layers to the generator. That's where we hit a wall: memory. Even on a machine with 32GB of RAM (DDR4 3200MHz C16), it was becoming an unfortunate constraint.
 
-The first thing was to tackle multithreaded mutations and then once that was at a reasonable state we moved on to adding more layers to the generator.
-
-Now we are at the point where memory is starting to become an unfortunate contstraint even on a machine with 32GB of RAM (DDR4 3200MHz C16).
-
-The program ([unigen](https://github.com/selfup/oxidizy/tree/master/crates/unigen), not the simulator) at max workload with my hardware outputs the following:
+Here is what the generator ([unigen-rs](https://github.com/selfup/unigen-rs), not the simulator) outputs at max workload on my hardware:
 
 ```
 $ ./scripts/generate.sh 360
@@ -38,15 +34,17 @@ sys     0m0.031s
 
 That's a lot of Quarks! 33 billion..
 
-Before the quark optimization ([in this PR](https://github.com/selfup/oxidizy/pull/12)) we capped out at 5.6 billion.
+Before the quark optimization ([in this PR](https://github.com/selfup/oxidizy/pull/12)), we capped out at 5.6 billion.
 
-We reduced the memory footprint 6.6 times. This runs at/around the same speed as the prior 5.6 billion Quark runs. Which is an added bonus since it increases the load on all threads now that we are increasing processing on the CPU (all logical cores). The CPU bump is more unique to our application and not a consequence of using enums. We just chose to keep the original structures to infer the enum type. More tedious but it will help when we introduce algebra.
+The optimization cut the memory footprint 5.9 times. A run now finishes in about the same amount of time as the old 5.6 billion Quark runs, while processing 4 times as much. Decreasing the memory profile improved performance 4 times over. That's a rare outcome for sure!
 
-Decreasing the memory profile by utilizing enums and additional processing improved the performance 4 times over. That's a rare outcome for sure.
+There is a trade-off: the CPU does more work now. That part is specific to our application, not a consequence of using enums. We chose to keep building the original structures and then infer the enum from them. More tedious, but it will help when we introduce algebra. As a bonus, that extra work is spread across all threads, so every logical core gets put to use.
+
+So how do enums pull that off? Let's start with the basics.
 
 ### Enums
 
-Here is a basic Enum in Rust:
+Here is a basic enum in Rust:
 
 ```rust
 #[derive(Debug, Copy, Clone)]
@@ -57,15 +55,13 @@ pub enum Apple {
 }
 ```
 
-Say we grab a bunch of random `Apple`s out of a basket. You can inspect the `Apple` and see that it's either: `Apple::Green`, `Apple::Red`, or `Apple::Yellow`.
+Say we grab a random `Apple` out of a basket. We can inspect it and know it's exactly one of `Apple::Green`, `Apple::Red`, or `Apple::Yellow`. Nothing else is possible.
 
-That's a pretty powerful construct. No need to store strings, or ints, or booleans, or anything really.
+That's a pretty powerful construct. Under the hood Rust stores it as a small number, but you never have to deal with that number yourself. You work with names you made up, ones your editor can autocomplete and you can read at a glance.
 
-You can now just store imaginary words that your editor can infer and that you can also read sensibly.
+It's also tiny. That `Apple` enum is 1 byte. Add 20 more variants and it's still 1 byte. In fact it stays 1 byte all the way up to 256 variants. Add a 257th and it grows to 2 bytes.
 
-That `Apple` enum is 1 byte. You can add say 20 other imaginary things to the `Apple` and it will still be 1 byte.
-
-Something like so:
+That means we can pack more information into each variant. Say we also care about freshness:
 
 ```rust
 #[derive(Debug, Copy, Clone)]
@@ -79,23 +75,11 @@ pub enum Apple {
 }
 ```
 
-Now you can inspect a _single_ `Apple` enum and have it be possibly 3 different colors as well as 3 different states of freshness, but it will always be one of the 6.
+A _single_ `Apple` now tells us both its color (3 options) and its freshness (2 options). It's always exactly one of the 6 combinations, and it's still 1 byte.
 
-This is really fun for matching, especially with tuples!
+> **Side note:** this only holds for C-style enums, where the variants don't carry any data. Once variants start holding values, the enum's size depends on what they hold. Here is a great rundown on Stack Overflow: [Enum Size Rundown](https://stackoverflow.com/a/45463142). A very useful function when optimizing is [std::mem::size_of](https://doc.rust-lang.org/std/mem/fn.size_of.html), which we'll use below.
 
-***
-_Important side note:_
-
-_If you go beyond the C style enum and start storing more complex variants your enum size will vary._
-
-_Here is a great rundown on Stack Overflow: [Enum Size Rundown](https://stackoverflow.com/a/45463142)_
-
-_A very useful function when optimizing: [std::mem::size_of](https://doc.rust-lang.org/std/mem/fn.size_of.html)_
-
-***
-<em></em>
-
-Let's do something similar with a `Carrot`:
+This is where enums get really fun: matching, especially on tuples. Let's make a `Carrot` the same way:
 
 ```rust
 #[derive(Debug, Copy, Clone)]
@@ -109,9 +93,7 @@ pub enum Carrot {
 }
 ```
 
-Now you can have a basket of `Apple`s and `Carrot`s of different states.
-
-Say you are executing a function called `inspect_an_apple_and_a_carrot`:
+Now say we're at the store with one of each in our basket, and we want to decide what to do next:
 
 ```rust
 let my_food_basket = (Apple::RedAndFresh, Carrot::PurpleAndNotFresh);
@@ -124,11 +106,58 @@ match my_food_basket {
 }
 ```
 
-Cool, let's go over why that saved us a ton of space.
+Rust checks the pair against each arm in order and runs the first one that fits. Our carrot isn't fresh, so we go find a better one. The `_` arm catches every other combination, and Rust won't compile the `match` until every possible pair is handled.
 
-A more traditional yet maintainable approach you would do something like:
+Cool! Now let's look at why this saves so much space. We'll build the same `Apple` a few different ways and measure each one.
+
+#### Attempt 1: Strings
+
+The quickest thing to reach for is a couple of `String`s:
 
 ```rust
+#[derive(Debug, Clone)]
+pub struct Apple {
+    pub color: String,
+    pub freshness: String,
+}
+```
+
+It reads fine, but it's the most expensive option by far. Each `String` is 24 bytes on a 64-bit machine (a pointer, a length, and a capacity), so this struct is 48 bytes before the text itself is even allocated on the heap. That heap allocation is also why it can't derive `Copy`.
+
+Nothing stops you from writing `"rde"` either. The compiler can't help you.
+
+#### Attempt 2: u8s
+
+To save memory, you could store numbers instead:
+
+```rust
+#[derive(Debug, Copy, Clone)]
+pub struct Apple {
+    pub color: u8,
+    pub freshness: u8,
+}
+```
+
+That's 2 bytes. A huge improvement! But now you have to remember what `0`, `1`, and `2` mean for color, and nothing stops you from storing a `7`. The editor knows it's a `u8` and that's all it knows.
+
+#### Attempt 3: A struct of enums
+
+The traditional, maintainable approach is a struct of two small enums:
+
+```rust
+#[derive(Debug, Copy, Clone)]
+pub enum Color {
+    Green,
+    Red,
+    Yellow,
+}
+
+#[derive(Debug, Copy, Clone)]
+pub enum Freshness {
+    Fresh,
+    NotFresh,
+}
+
 #[derive(Debug, Copy, Clone)]
 pub struct Apple {
     pub color: Color,
@@ -136,47 +165,48 @@ pub struct Apple {
 }
 ```
 
-Where Color/Freshness is an Enum similar to `Color::Red`/`Freshness::Fresh`.
+Each enum is 1 byte, so this is still 2 bytes. Same size as the `u8`s, but now your editor knows every possible value, and the compiler won't let you store a color that doesn't exist. Readability for free.
 
-A quick and easy struct while having less inferance from your editor would be:
+#### Attempt 4: One enum
+
+Finally, the `Apple` enum from above, where color and freshness are combined into a single type. There are only 6 possible apples, and 6 fits easily in a single byte.
+
+That's half the size of attempts 2 and 3, and just as readable.
+
+#### Side by side
+
+| Apple as | Size |
+|---|---|
+| Two `String`s | 48 bytes + heap |
+| Two `u8`s | 2 bytes |
+| Two enums | 2 bytes |
+| One enum | 1 byte |
+
+You can check any of these yourself:
 
 ```rust
-#[derive(Debug, Copy, Clone)]
-pub struct Apple {
-    pub color: String,
-    pub freshness: String,
-}
+println!("{}", std::mem::size_of::<Apple>());
 ```
 
-An optimized version of that:
+One byte doesn't sound like much. It adds up fast though. Say you store one of these for each of the 11 billion Baryons in the output at the top of this post:
 
-```rust
-#[derive(Debug, Copy, Clone)]
-pub struct Apple {
-    color: u8,
-    freshness: u8,
-}
-```
+- One enum: 11 GB
+- Two enums or two `u8`s: 22 GB
+- Two `String`s: over 500 GB, before the text itself
 
-Here a `u8` is a cheap memory saving trick while still having to map things out and not have as much intellisense. While the editor will know it's a `u8` you'll have to memorize what 0, 6, 11, or 24 means.
+On a 32GB machine, that's the difference between fitting comfortably, getting tight, and not a chance.
 
-Whereas with an enum you just know because it tells you.
-
-With the enum we now have half the footprint as using the `u8`s.
-
-Since we have to store 2 `u8`s in the low memory struct version, that's two bytes.
-
-With the enum we can store all 6 potential different states as 1 byte.
+The trade-off is that every combination needs its own variant. 3 colors and 2 freshness states make 6 variants. Add a third property with 4 options and you're at 24. That's fine for a handful of properties, and you have up to 256 variants before it grows to 2 bytes.
 
 Pretty cool!
 
 ### Quarks
 
-[This PR in Oxidizy](https://github.com/selfup/oxidizy/pull/12) introduces a work in progress of this refactor.
+Now back to the universe. [This PR in Oxidizy](https://github.com/selfup/oxidizy/pull/12) applies the same idea to quarks. It's a work in progress of this refactor.
 
-Essentially additional enums were made to create a representation of a created `Proton`/`Neutron`. So we still create the original elements on the fly to have all the correct business logic in place, then we infer from the created object the representation of that data that we will store in RAM. The created object that is not stored now dissapears, reducing the memory footprint. `Protons` is a two field struct with a count and a default array of 118 `ProtonData::Unknown`s.
+The generator still builds real `Proton` and `Neutron` structs on the fly, so all the business logic stays in one place. But instead of keeping them, it reads each one, stores a 1 byte enum that represents it, and lets the original go. The full struct only lives long enough to be inspected, and that's where the memory savings come from.
 
-What is `ProtonData`? That was the made up abstraction to the `Proton` objects themselves:
+Here's the enum a proton gets stored as:
 
 ```rust
 #[derive(Debug, Copy, Clone)]
@@ -189,7 +219,26 @@ pub enum ProtonData {
 }
 ```
 
-Something similar was done with quarks, and an enum called `QuarkData` was made. This makes processing a `Proton` quite simple matching a 3 element tuple:
+`Protons` is a struct with two fields: a count, and an array of 118 `ProtonData` values that all start out as `ProtonData::Unknown`.
+
+Quarks got the same treatment, with an enum called `QuarkData`:
+
+```rust
+#[derive(Debug, Copy, Clone)]
+pub enum QuarkData {
+    Unknown,
+    RedUpQuark,
+    RedDownQuark,
+    BlueUpQuark,
+    BlueDownQuark,
+    GreenUpQuark,
+    GreenDownQuark,
+    AlphaUpQuark,
+    AlphaDownQuark,
+}
+```
+
+A proton is made of three quarks, so turning one into a `ProtonData` is the same tuple matching trick from the fruit basket, just with three elements instead of two:
 
 ```rust
 impl ProtonData {
@@ -217,25 +266,6 @@ impl ProtonData {
 }
 ```
 
-This same logic is being implemented for `Neutrons` as well since they are made of `Quarks`.
+Neutrons work the same way, since they're made of quarks too.
 
-Here is `QuarkData` for further clarification:
-
-```rust
-#[derive(Debug, Copy, Clone)]
-pub enum QuarkData {
-    Unknown,
-    RedUpQuark,
-    RedDownQuark,
-    BlueUpQuark,
-    BlueDownQuark,
-    GreenUpQuark,
-    GreenDownQuark,
-    AlphaUpQuark,
-    AlphaDownQuark,
-}
-```
-
-So there you have it.
-
-Increase CPU a bit, decrease mem allocations by a significant amount by utilizing C style enums, and a faster program emerges!
+So there you have it. Spend a bit more CPU, store tiny C-style enums instead of full structs, and memory drops enough that the same run time now processes 4 times as much!

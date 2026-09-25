@@ -4,6 +4,15 @@
 @import "minima";
 @import "rouge-dark";
 
+// Minima renders blockquotes larger, italic, and with tightened letter
+// spacing. Keep them the same size and style as body text so notes read
+// as part of the post.
+blockquote {
+  font-size: inherit;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
 @media (prefers-color-scheme: dark) {
   html { color-scheme: dark; }
 
@@ -25,6 +34,7 @@
     border-color: #333;
   }
 
+  table { color: #ddd; }
   table th { background-color: #161b22; }
   table tr:nth-child(even) { background-color: #1e2022; }
   table th, table td { border-color: #333; }
