@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    steps:
+      - uses: actions/checkout@v5
+
+      # Hosted Ubuntu runners ship podman, so the image is built directly on
+      # the runner with the same script used locally. No docker-in-docker.
+      - name: Ensure podman is available
+        run: |
+          if ! command -v podman >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y podman
+          fi
+          podman version
+
+      - name: Build container image
+        run: scripts/build-image.sh
+
+      - name: Build site inside the image
+        run: scripts/build-site.sh
+
+      - name: Check generated site
+        run: |
+          test -f _site/index.html
+          test -f _site/feed.xml
+          test ! -e _site/Dockerfile
+          test ! -e _site/scripts
+          echo "generated $(find _site -name '*.html' | wc -l) html files"

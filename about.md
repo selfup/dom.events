@@ -6,8 +6,8 @@ permalink: /about/
 
 I code. I art. I music. I am.
 
-Fascinated with concurrent/parallel programming. Containers are fun too!
+Fascinated with concurrent/parallel programming.
 
-Manager - Security Innovation Engineering at Allstate.
+Director of Applied Security at Allstate
 
-Here is my website if you want to find more social links about me: [selfup](https://selfup.me)
+Website: [selfup](https://selfup.me)

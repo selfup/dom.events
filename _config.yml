@@ -13,6 +13,9 @@ plugins:
   - jemoji
 
 exclude:
+  - .github
+  - Dockerfile
+  - scripts
   - Gemfile
   - Gemfile.lock
   - node_modules

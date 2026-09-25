@@ -1,0 +1,14 @@
+.git
+.github
+.gitignore
+.editorconfig
+.dockerignore
+Dockerfile
+scripts
+_site
+.sass-cache
+.jekyll-metadata
+.jekyll-cache
+.DS_Store
+vendor
+node_modules
