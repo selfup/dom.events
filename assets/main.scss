@@ -19,9 +19,11 @@ blockquote {
   body { color: #ddd; background-color: #181a1b; }
 
   a, a:visited { color: #6ea8fe; }
+  a:hover { color: #9ec5fe; }
 
   .site-title, .site-title:visited,
   .page-link, .page-link:visited { color: #ddd; }
+  .site-title:hover, .page-link:hover { color: #fff; }
 
   .site-header { border-top-color: #444; border-bottom-color: #333; }
   .site-footer { border-top-color: #333; }
